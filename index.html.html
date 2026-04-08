@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Jeanice Ang — Media Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+  --obsidian:#0D0D0D;
+  --gold:#C9A84C;
+  --gold-light:#E8CC80;
+  --purple:#7B5FA0;
+  --purple-light:#A883D4;
+  --cream:#F8F4EE;
+  --white:#FFFFFF;
+}
+html{height:100%;scroll-behavior:smooth;}
+body{min-height:100%;background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--white);overflow-x:hidden;}
+
+/* TOP NAV */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:0.5px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:4px;}
+.nav-link{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.45);cursor:pointer;border:0.5px solid transparent;transition:all 0.2s;text-decoration:none;background:none;}
+.nav-link:hover{color:var(--white);border-color:rgba(255,255,255,0.12);}
+.nav-link.active{background:var(--gold);color:var(--obsidian);border-color:var(--gold);}
+.nav-toggle{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:24px;padding:8px 16px;cursor:pointer;transition:background 0.2s;}
+.nav-toggle:hover{background:rgba(255,255,255,0.08);}
+.toggle-track{width:36px;height:20px;border-radius:10px;position:relative;transition:background 0.3s;flex-shrink:0;}
+.toggle-track.corp{background:rgba(201,168,76,0.7);}
+.toggle-track.gaming{background:rgba(123,95,160,0.8);}
+.toggle-thumb{position:absolute;top:3px;width:14px;height:14px;border-radius:50%;background:white;transition:left 0.3s;box-shadow:0 1px 4px rgba(0,0,0,0.4);}
+.toggle-track.corp .toggle-thumb{left:3px;}
+.toggle-track.gaming .toggle-thumb{left:19px;}
+.toggle-label{font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);min-width:68px;}
+
+/* MOBILE NAV */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:0.5px solid rgba(255,255,255,0.07);height:72px;align-items:center;justify-content:space-around;padding:0 8px;padding-bottom:env(safe-area-inset-bottom);}
+.mob-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;cursor:pointer;border-radius:12px;min-width:52px;transition:opacity 0.2s;}
+.mob-item .mi{font-size:20px;line-height:1;}
+.mob-item .ml{font-size:9px;font-weight:500;letter-spacing:0.04em;color:rgba(255,255,255,0.3);}
+.mob-item.active .ml{color:var(--gold);}
+.mob-item:not(.active){opacity:0.4;}
+
+/* SECTIONS */
+section{min-height:100vh;scroll-margin-top:60px;}
+
+/* COVER */
+#cover{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:60px;}
+.cover-photo-side{position:relative;background:linear-gradient(160deg,rgba(123,95,160,0.15),rgba(201,168,76,0.07));display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 60px);overflow:hidden;order:2;}
+.cover-photo-side img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+.cover-photo-placeholder{display:flex;flex-direction:column;align-items:center;gap:14px;color:rgba(255,255,255,0.2);text-align:center;padding:40px;}
+.cover-photo-placeholder svg{opacity:0.25;}
+.cover-photo-placeholder p{font-size:13px;line-height:1.7;}
+.cover-photo-placeholder p span{font-size:11px;opacity:0.6;display:block;margin-top:4px;}
+.cover-text-side{display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px;position:relative;z-index:2;order:1;}
+.cover-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border-left:2px solid var(--gold);padding-left:12px;margin-bottom:28px;}
+.cover-name{font-family:'Cormorant Garamond',serif;font-size:clamp(80px,9vw,120px);font-weight:700;line-height:0.87;color:var(--white);letter-spacing:-0.02em;margin-bottom:24px;}
+.cover-name .gold{color:var(--gold);}
+.cover-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,20px);font-style:italic;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.5;margin-bottom:28px;max-width:380px;}
+.cover-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
+.chip{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:7px 16px;border-radius:20px;}
+.chip.gold{background:rgba(201,168,76,0.1);border:0.5px solid rgba(201,168,76,0.3);color:var(--gold-light);}
+.chip.purple{background:rgba(123,95,160,0.1);border:0.5px solid rgba(123,95,160,0.3);color:var(--purple-light);}
+.cover-stats{display:flex;gap:0;border:0.5px solid rgba(255,255,255,0.09);border-radius:14px;overflow:hidden;max-width:400px;}
+.cstat{flex:1;padding:20px 16px;text-align:center;background:rgba(255,255,255,0.03);}
+.cstat+.cstat{border-left:0.5px solid rgba(255,255,255,0.08);}
+.cstat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--white);line-height:1;}
+.cstat-n sup{font-size:16px;color:var(--gold);}
+.cstat-l{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;}
+.cover-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--purple),transparent);}
+
+/* ABOUT */
+#about{background:var(--cream);color:var(--obsidian);padding:100px 64px 80px;}
+.section-tag{font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border-left:2px solid var(--gold);padding-left:12px;margin-bottom:20px;display:inline-block;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.about-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4.5vw,60px);font-weight:700;line-height:1.05;color:var(--obsidian);margin-bottom:28px;}
+.about-headline em{font-style:italic;color:var(--purple);}
+.about-body{font-size:15px;line-height:1.85;color:#555;max-width:520px;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px;}
+.stat-box{background:white;border:0.5px solid rgba(0,0,0,0.08);border-radius:12px;padding:20px 18px;text-align:center;}
+.stat-box-n{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:700;color:var(--obsidian);line-height:1;}
+.stat-box-n sup{font-size:20px;color:var(--gold);}
+.stat-box-n sup.purple{color:var(--purple);}
+.stat-box-l{font-size:10px;color:#999;letter-spacing:0.12em;text-transform:uppercase;margin-top:5px;}
+.pills{display:flex;flex-wrap:wrap;gap:8px;}
+.pill{font-size:11px;font-weight:500;padding:7px 15px;border-radius:20px;border:0.5px solid;}
+.pill.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.3);color:#7a5e10;}
+.pill.purple{background:rgba(123,95,160,0.06);border-color:rgba(123,95,160,0.25);color:var(--purple);}
+.pill.dark{background:rgba(0,0,0,0.05);border-color:rgba(0,0,0,0.12);color:#444;}
+
+/* SERVICES */
+#services{background:var(--obsidian);padding:100px 64px 80px;}
+.services-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4.5vw,60px);font-weight:700;line-height:1.0;color:var(--white);margin-bottom:56px;max-width:500px;}
+.services-headline span{color:var(--gold);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.svc-card{background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.09);border-radius:14px;padding:32px 28px;transition:border-color 0.2s,background 0.2s;}
+.svc-card:hover{border-color:rgba(201,168,76,0.25);background:rgba(201,168,76,0.03);}
+.svc-card.gaming-card:hover{border-color:rgba(123,95,160,0.3);background:rgba(123,95,160,0.05);}
+.svc-icon{font-size:26px;margin-bottom:18px;}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.svc-desc{font-size:13px;line-height:1.75;color:rgba(255,255,255,0.45);}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;}
+.svc-tag{font-size:10px;padding:4px 11px;border-radius:20px;font-weight:500;}
+.svc-tag.g{background:rgba(201,168,76,0.12);color:var(--gold-light);}
+.svc-tag.p{background:rgba(123,95,160,0.15);color:var(--purple-light);}
+
+/* EXPERIENCE */
+#experience{background:var(--cream);color:var(--obsidian);padding:100px 64px 80px;}
+.exp-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4.5vw,60px);font-weight:700;color:var(--obsidian);margin-bottom:56px;max-width:460px;line-height:1.05;}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
+.exp-col-head{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:0.5px solid rgba(0,0,0,0.1);}
+.exp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.exp-dot.gold{background:var(--gold);}
+.exp-dot.purple{background:var(--purple);}
+.exp-dot.coral{background:#C0674A;}
+.exp-col-title{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#888;}
+.exp-item{padding:13px 0;border-bottom:0.5px solid rgba(0,0,0,0.06);}
+.exp-item:last-child{border-bottom:none;}
+.exp-item-name{font-size:14px;font-weight:500;color:var(--obsidian);line-height:1.4;}
+.exp-item-sub{font-size:12px;color:#999;margin-top:2px;}
+
+/* BOOKING */
+#booking{background:var(--obsidian);padding:100px 64px 80px;position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;}
+.booking-glow{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(123,95,160,0.1) 0%,transparent 65%);pointer-events:none;}
+.booking-glow2{position:absolute;bottom:-150px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.booking-inner{position:relative;z-index:2;max-width:600px;}
+.booking-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,6vw,88px);font-weight:700;line-height:0.95;color:var(--white);margin-bottom:16px;}
+.booking-headline span{color:var(--gold);}
+.booking-sub{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(255,255,255,0.35);margin-bottom:56px;line-height:1.5;max-width:440px;}
+.booking-links{display:flex;flex-direction:column;gap:12px;max-width:480px;}
+.blink{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.09);border-radius:13px;padding:18px 22px;cursor:pointer;transition:border-color 0.2s;text-decoration:none;}
+.blink:hover{border-color:rgba(201,168,76,0.3);}
+.blink-icon{width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.12);border:0.5px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.blink-label{font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);}
+.blink-val{font-size:15px;font-weight:500;color:var(--white);margin-top:2px;}
+.booking-note{margin-top:40px;font-size:12px;color:rgba(255,255,255,0.2);line-height:1.7;border-top:0.5px solid rgba(255,255,255,0.07);padding-top:20px;max-width:480px;}
+
+/* MODE AWARE */
+.corp-only{display:block;}
+.gaming-only{display:none;}
+.gaming-mode .corp-only{display:none;}
+.gaming-mode .gaming-only{display:block;}
+.gaming-mode .cover-eyebrow{color:var(--purple-light);border-left-color:var(--purple-light);}
+.gaming-mode .cover-name .gold{color:var(--purple-light);}
+.gaming-mode #services{background:#0e0b14;}
+.gaming-mode .cover-bar{background:linear-gradient(90deg,transparent,var(--purple),var(--gold),transparent);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .top-nav{padding:0 20px;height:56px;}
+  .nav-links{display:none;}
+  .mobile-nav{display:flex;}
+  section{scroll-margin-top:56px;}
+  #cover{grid-template-columns:1fr;padding-top:56px;}
+  .cover-photo-side{min-height:55vw;max-height:380px;order:1;}
+  .cover-text-side{order:2;padding:36px 24px 100px;}
+  .cover-name{font-size:clamp(64px,16vw,96px);}
+  #about{padding:60px 24px 60px;}
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  #services{padding:60px 24px 60px;}
+  .svc-grid{grid-template-columns:1fr;gap:12px;}
+  #experience{padding:60px 24px 60px;}
+  .exp-grid{grid-template-columns:1fr;gap:32px;}
+  #booking{padding:60px 24px 100px;}
+  body{padding-bottom:72px;}
+}
+@media(max-width:480px){
+  .cover-name{font-size:clamp(56px,18vw,80px);}
+  .cover-text-side{padding:28px 20px 100px;}
+  #about,#services,#experience,#booking{padding-left:20px;padding-right:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a class="nav-logo" href="#cover">JEANICE ANG</a>
+  <div class="nav-links">
+    <a class="nav-link active" href="#cover">Home</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#experience">Experience</a>
+    <a class="nav-link" href="#booking">Book</a>
+  </div>
+  <div class="nav-toggle" onclick="toggleMode()">
+    <div class="toggle-track corp" id="tTrack"><div class="toggle-thumb"></div></div>
+    <span class="toggle-label" id="tLabel">Corporate</span>
+  </div>
+</nav>
+
+<nav class="mobile-nav">
+  <div class="mob-item active" id="mi-cover" onclick="goTo('cover',this)"><div class="mi">🏠</div><div class="ml">Home</div></div>
+  <div class="mob-item" id="mi-about" onclick="goTo('about',this)"><div class="mi">👤</div><div class="ml">About</div></div>
+  <div class="mob-item" id="mi-services" onclick="goTo('services',this)"><div class="mi">🎙️</div><div class="ml">Services</div></div>
+  <div class="mob-item" id="mi-experience" onclick="goTo('experience',this)"><div class="mi">⭐</div><div class="ml">Credits</div></div>
+  <div class="mob-item" id="mi-booking" onclick="goTo('booking',this)"><div class="mi">📩</div><div class="ml">Book</div></div>
+</nav>
+
+<!-- COVER -->
+<section id="cover">
+  <div class="cover-photo-side">
+    <!-- TO ADD PHOTO: replace the div below with <img src="your-photo.jpg" alt="Jeanice Ang"> -->
+    <div class="cover-photo-placeholder">
+      <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 5V4a1 1 0 011-1h6a1 1 0 011 1v1"/></svg>
+      <p>Jeanice's hero photo<span>Full-length · stage or portrait shot</span></p>
+    </div>
+    <div class="cover-bar"></div>
+  </div>
+  <div class="cover-text-side">
+    <div class="cover-eyebrow corp-only">MC · Content Creator · Jakarta</div>
+    <div class="cover-eyebrow gaming-only" style="color:var(--purple-light);border-left-color:var(--purple-light);">Esports Host · Content Creator · Jakarta</div>
+    <div class="cover-name">JEAN<br><span class="gold">ICE</span><br><span style="color:white">ANG</span></div>
+    <div class="cover-tagline corp-only">"The reason your audience<br>won't check their phone."</div>
+    <div class="cover-tagline gaming-only">"Owns the room.<br>Speaks the culture."</div>
+    <div class="cover-chips">
+      <span class="chip gold">Bilingual INA / ENG</span>
+      <span class="chip purple corp-only">11+ Years on stage</span>
+      <span class="chip purple gaming-only">Esports & Gaming Host</span>
+    </div>
+    <div class="cover-stats">
+      <div class="cstat"><div class="cstat-n">11<sup>+</sup></div><div class="cstat-l">Years</div></div>
+      <div class="cstat"><div class="cstat-n">152<sup>+</sup></div><div class="cstat-l">Events</div></div>
+      <div class="cstat"><div class="cstat-n">250<sup>K+</sup></div><div class="cstat-l">Instagram</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">About</div>
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="about-headline">Elegant on stage.<br><em>Unfiltered</em><br>everywhere else.</div>
+      <div class="about-body corp-only">Jeanice Ang is a bilingual MC and content creator based in Jakarta with 11+ years of experience commanding corporate stages, gaming arenas, and brand activations. She brings professional polish without the stiffness — the kind of host whose energy the room actually feels, not just hears.<br><br>Whether it's a BUMN conference or an esports grand final, nobody's checking their phone.</div>
+      <div class="about-body gaming-only">Jeanice Ang is one of Indonesia's most versatile event hosts — equally at home on a gaming tournament stage as she is at a corporate award night. With 11+ years of live hosting experience and a genuine understanding of gaming culture, she brings authentic energy without trying too hard.<br><br>The crowd feels it instantly.</div>
+    </div>
+    <div class="about-right">
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-box-n">11<sup>+</sup></div><div class="stat-box-l">Years on stage</div></div>
+        <div class="stat-box"><div class="stat-box-n">152<sup>+</sup></div><div class="stat-box-l">Events hosted</div></div>
+        <div class="stat-box"><div class="stat-box-n">250<sup class="purple">K+</sup></div><div class="stat-box-l">IG followers</div></div>
+        <div class="stat-box"><div class="stat-box-n">15<sup>K+</sup></div><div class="stat-box-l">TikTok</div></div>
+      </div>
+      <div class="pills">
+        <span class="pill gold">Bilingual INA / ENG</span>
+        <span class="pill gold">Live event hosting</span>
+        <span class="pill purple">Corporate & BUMN</span>
+        <span class="pill purple">Esports & gaming</span>
+        <span class="pill dark">Brand activations</span>
+        <span class="pill dark">On-camera talent</span>
+        <span class="pill dark">Crowd engagement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag corp-only">What I do</div>
+  <div class="section-tag gaming-only" style="color:var(--purple-light);border-left-color:var(--purple-light);">What I do</div>
+  <div class="services-headline corp-only">Built for every<br><span>stage.</span></div>
+  <div class="services-headline gaming-only">Built for every<br><span style="color:var(--purple-light)">arena.</span></div>
+  <div class="svc-grid corp-only">
+    <div class="svc-card"><div class="svc-icon">🏢</div><div class="svc-title">Corporate & BUMN</div><div class="svc-desc">Conferences, award nights, product launches. Bilingual, polished, always prepared. The room stays engaged — start to finish.</div><div class="svc-tags"><span class="svc-tag g">Conferences</span><span class="svc-tag g">Award nights</span><span class="svc-tag g">Launches</span></div></div>
+    <div class="svc-card"><div class="svc-icon">🎮</div><div class="svc-title">Esports & Gaming</div><div class="svc-desc">High-energy hosting for competitive events. Understands the culture, speaks the language — without pretending to be something she's not.</div><div class="svc-tags"><span class="svc-tag p">Tournaments</span><span class="svc-tag p">Grand finals</span><span class="svc-tag p">Fan events</span></div></div>
+    <div class="svc-card"><div class="svc-icon">✨</div><div class="svc-title">Brand Activations</div><div class="svc-desc">On-stage and on-camera hosting for brand events and experiential marketing. Audience-first energy, on-brand execution.</div><div class="svc-tags"><span class="svc-tag g">Activations</span><span class="svc-tag g">Live shoots</span><span class="svc-tag g">Experiential</span></div></div>
+  </div>
+  <div class="svc-grid gaming-only">
+    <div class="svc-card gaming-card"><div class="svc-icon">🏆</div><div class="svc-title">Tournament Hosting</div><div class="svc-desc">Grand finals, national championships, regional qualifiers. Reads the crowd, builds the tension, delivers at the peak moment.</div><div class="svc-tags"><span class="svc-tag p">Grand finals</span><span class="svc-tag p">Nationals</span><span class="svc-tag p">Qualifiers</span></div></div>
+    <div class="svc-card gaming-card"><div class="svc-icon">🎙️</div><div class="svc-title">Stage MC</div><div class="svc-desc">Fan meets, award shows, gaming expos. Keeps energy high between segments, never lets the stage go cold.</div><div class="svc-tags"><span class="svc-tag p">Fan events</span><span class="svc-tag p">Award shows</span><span class="svc-tag p">Expos</span></div></div>
+    <div class="svc-card gaming-card"><div class="svc-icon">📲</div><div class="svc-title">Gaming Brand Content</div><div class="svc-desc">On-camera hosting and branded content for gaming brands. Authentic reach — 250K+ IG, 15K+ TikTok.</div><div class="svc-tags"><span class="svc-tag g">250K+ IG</span><span class="svc-tag g">Brand content</span><span class="svc-tag g">Live shoots</span></div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">Experience</div>
+  <div class="exp-headline">Trusted across<br>industries.</div>
+  <div class="exp-grid">
+    <div class="exp-col">
+      <div class="exp-col-head"><div class="exp-dot gold"></div><div class="exp-col-title">Corporate & BUMN</div></div>
+      <div class="exp-item"><div class="exp-item-name">CIMB Niaga Leaders Camp</div></div>
+      <div class="exp-item"><div class="exp-item-name">HPE × Kawan Lama</div></div>
+      <div class="exp-item"><div class="exp-item-name">US Embassy Esports Program</div></div>
+      <div class="exp-item"><div class="exp-item-name">Kemenparekraf</div><div class="exp-item-sub">Hari Gim Indonesia</div></div>
+    </div>
+    <div class="exp-col">
+      <div class="exp-col-head"><div class="exp-dot purple"></div><div class="exp-col-title">Esports & Gaming</div></div>
+      <div class="exp-item"><div class="exp-item-name">PUBG Mobile National Championship</div></div>
+      <div class="exp-item"><div class="exp-item-name">FFIM Grand Final</div><div class="exp-item-sub">Kompas TV</div></div>
+      <div class="exp-item"><div class="exp-item-name">MLBB All Star Awards</div></div>
+      <div class="exp-item"><div class="exp-item-name">M7 2026</div></div>
+    </div>
+    <div class="exp-col">
+      <div class="exp-col-head"><div class="exp-dot coral"></div><div class="exp-col-title">Entertainment & Lifestyle</div></div>
+      <div class="exp-item"><div class="exp-item-name">Indonesian Movie Awards</div><div class="exp-item-sub">Red Carpet</div></div>
+      <div class="exp-item"><div class="exp-item-name">Popcon Asia</div></div>
+      <div class="exp-item"><div class="exp-item-name">MNC — C News Infotainment</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-glow"></div>
+  <div class="booking-glow2"></div>
+  <div class="booking-inner">
+    <div class="section-tag">Book Jeanice</div>
+    <div class="booking-headline">Let's make<br>your <span>event</span><br>unforgettable.</div>
+    <div class="booking-sub">Ready to make your audience forget their phone? Let's talk.</div>
+    <div class="booking-links">
+      <!-- UPDATE: replace 628XXXXXXXXX with real number, no spaces or + -->
+      <a class="blink" href="https://wa.me/628XXXXXXXXX" target="_blank">
+        <div class="blink-icon">💬</div>
+        <div><div class="blink-label">WhatsApp</div><div class="blink-val">+62 8xx xxxx xxxx</div></div>
+      </a>
+      <a class="blink" href="https://instagram.com/jeaniceang" target="_blank">
+        <div class="blink-icon">📸</div>
+        <div><div class="blink-label">Instagram</div><div class="blink-val">@jeaniceang</div></div>
+      </a>
+    </div>
+    <div class="booking-note">Audience demographic stats available upon request.<br>Response within 24 hours on business days.</div>
+  </div>
+</section>
+
+<script>
+let isGaming = false;
+
+function toggleMode() {
+  isGaming = !isGaming;
+  const body = document.body;
+  const track = document.getElementById('tTrack');
+  const label = document.getElementById('tLabel');
+  if (isGaming) {
+    body.classList.add('gaming-mode');
+    track.className = 'toggle-track gaming';
+    label.textContent = 'Gaming';
+    label.style.color = '#A883D4';
+  } else {
+    body.classList.remove('gaming-mode');
+    track.className = 'toggle-track corp';
+    label.textContent = 'Corporate';
+    label.style.color = 'rgba(255,255,255,0.55)';
+  }
+}
+
+function goTo(id, el) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.mob-item').forEach(m => m.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Scroll spy
+const secIds = ['cover','about','services','experience','booking'];
+const mobIds = secIds.map(id => document.getElementById('mi-'+id));
+const navLs = document.querySelectorAll('.nav-link');
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = secIds.indexOf(entry.target.id);
+      if (idx !== -1) {
+        mobIds.forEach(m => m && m.classList.remove('active'));
+        navLs.forEach(l => l.classList.remove('active'));
+        if (mobIds[idx]) mobIds[idx].classList.add('active');
+        if (navLs[idx]) navLs[idx].classList.add('active');
+      }
+    }
+  });
+}, {threshold:0.4});
+
+secIds.forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
+</script>
+</body>
+</html>
