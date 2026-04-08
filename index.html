@@ -22,6 +22,8 @@ body{min-height:100%;background:var(--obsidian);font-family:'DM Sans',sans-serif
 /* TOP NAV */
 .top-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:0.5px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-decoration:none;}
+.nav-tagline{font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.08em;margin-left:12px;border-left:0.5px solid rgba(255,255,255,0.1);padding-left:12px;}
+.nav-left{display:flex;align-items:center;}
 .nav-links{display:flex;gap:4px;}
 .nav-link{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.45);cursor:pointer;border:0.5px solid transparent;transition:all 0.2s;text-decoration:none;background:none;}
 .nav-link:hover{color:var(--white);border-color:rgba(255,255,255,0.12);}
@@ -112,6 +114,22 @@ section{min-height:100vh;scroll-margin-top:60px;}
 .exp-item-name{font-size:14px;font-weight:500;color:var(--obsidian);line-height:1.4;}
 .exp-item-sub{font-size:12px;color:#999;margin-top:2px;}
 
+/* PORTFOLIO */
+#portfolio{background:var(--obsidian);padding:100px 64px 80px;}
+.portfolio-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4.5vw,60px);font-weight:700;line-height:1.05;color:var(--white);margin-bottom:48px;max-width:500px;}
+.portfolio-headline span{color:var(--gold);}
+.portfolio-hero{position:relative;width:100%;border-radius:14px;overflow:hidden;border:0.5px solid rgba(255,255,255,0.08);margin-bottom:16px;background:#000;}
+.portfolio-hero iframe{width:100%;aspect-ratio:16/9;display:block;border:none;}
+.portfolio-hero-label{margin-top:10px;font-size:13px;color:rgba(255,255,255,0.4);padding-left:4px;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;}
+.portfolio-cell{border-radius:10px;overflow:hidden;border:0.5px solid rgba(255,255,255,0.07);background:#000;}
+.portfolio-cell iframe{width:100%;aspect-ratio:16/9;display:block;border:none;}
+.portfolio-cell-label{padding:10px 12px;}
+.portfolio-cell-cat{font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:2px;}
+.portfolio-cell-name{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.4;}
+/* Placeholder for cells without video yet */
+.portfolio-cell-ph{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.15);font-size:11px;}
+
 /* BOOKING */
 #booking{background:var(--obsidian);padding:100px 64px 80px;position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;}
 .booking-glow{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(123,95,160,0.1) 0%,transparent 65%);pointer-events:none;}
@@ -130,41 +148,53 @@ section{min-height:100vh;scroll-margin-top:60px;}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .top-nav{padding:0 20px;height:56px;}
-  .nav-links{display:none;}
-  .mobile-nav{display:flex;}
-  section{scroll-margin-top:56px;}
-  #cover{grid-template-columns:1fr;padding-top:56px;}
+  .top-nav{padding:0 12px;height:52px;gap:8px;}
+  .nav-tagline{display:none;}
+  .nav-logo{font-size:13px;letter-spacing:0.08em;flex-shrink:0;}
+  .nav-links{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:1;}
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-link{padding:5px 10px;font-size:11px;white-space:nowrap;}
+  .mob-book-btn{display:none !important;}
+  .mobile-nav{display:none;}
+  section{scroll-margin-top:52px;}
+  #cover{grid-template-columns:1fr;padding-top:52px;}
   .cover-photo-side{min-height:55vw;max-height:380px;order:1;}
-  .cover-text-side{order:2;padding:36px 24px 100px;}
+  .cover-text-side{order:2;padding:36px 24px 60px;}
   .cover-name{font-size:clamp(64px,16vw,96px);}
   #about{padding:60px 24px 60px;}
   .about-grid{grid-template-columns:1fr;gap:40px;}
   #services{padding:60px 24px 60px;}
   .svc-grid{grid-template-columns:1fr;gap:12px;}
+  #portfolio{padding:60px 24px 60px;}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);}
   #experience{padding:60px 24px 60px;}
   .exp-grid{grid-template-columns:1fr;gap:32px;}
-  #booking{padding:60px 24px 100px;}
-  body{padding-bottom:72px;}
+  #booking{padding:60px 24px 60px;}
+  body{padding-bottom:0;}
 }
 @media(max-width:480px){
   .cover-name{font-size:clamp(56px,18vw,80px);}
   .cover-text-side{padding:28px 20px 100px;}
-  #about,#services,#experience,#booking{padding-left:20px;padding-right:20px;}
+  #about,#services,#portfolio,#experience,#booking{padding-left:20px;padding-right:20px;}
 }
 </style>
 </head>
 <body>
 
 <nav class="top-nav">
-  <a class="nav-logo" href="#cover">JEANICE ANG</a>
+  <div class="nav-left">
+    <a class="nav-logo" href="#cover">JEANICE ANG</a>
+    <span class="nav-tagline">Bilingual MC · Jakarta</span>
+  </div>
   <div class="nav-links">
-    <a class="nav-link active" href="#cover">Home</a>
-    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link active" href="#about">About</a>
     <a class="nav-link" href="#services">Services</a>
     <a class="nav-link" href="#experience">Experience</a>
-    <a class="nav-link" href="#booking">Book</a>
+    <a class="nav-link" href="#portfolio">Portfolio</a>
+    <a class="nav-link" href="#booking" style="background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.3);color:var(--gold-light);">Book</a>
   </div>
+  <!-- Mobile: Book button in top bar -->
+  <a href="#booking" onclick="goTo('booking', document.getElementById('mi-booking'))" style="display:none;font-size:11px;font-weight:500;padding:7px 16px;border-radius:20px;background:rgba(201,168,76,0.12);border:0.5px solid rgba(201,168,76,0.3);color:var(--gold-light);text-decoration:none;" class="mob-book-btn">Book</a>
 </nav>
 
 <nav class="mobile-nav">
@@ -172,6 +202,7 @@ section{min-height:100vh;scroll-margin-top:60px;}
   <div class="mob-item" id="mi-about" onclick="goTo('about',this)"><div class="mi">👤</div><div class="ml">About</div></div>
   <div class="mob-item" id="mi-services" onclick="goTo('services',this)"><div class="mi">🎙️</div><div class="ml">Services</div></div>
   <div class="mob-item" id="mi-experience" onclick="goTo('experience',this)"><div class="mi">⭐</div><div class="ml">Credits</div></div>
+  <div class="mob-item" id="mi-portfolio" onclick="goTo('portfolio',this)"><div class="mi">🎬</div><div class="ml">Videos</div></div>
   <div class="mob-item" id="mi-booking" onclick="goTo('booking',this)"><div class="mi">📩</div><div class="ml">Book</div></div>
 </nav>
 
@@ -311,6 +342,72 @@ section{min-height:100vh;scroll-margin-top:60px;}
   </div>
 </section>
 
+<!-- ============================================================
+     PORTFOLIO SECTION
+
+     TO SWAP IN A YOUTUBE VIDEO:
+     1. Go to the YouTube video
+     2. Click Share → Embed
+     3. Copy just the URL from src="..." — looks like:
+        https://www.youtube.com/embed/XXXXXXXXXXX
+     4. Paste it into the src="" below
+
+     For the 4 smaller clips, same process — just paste each
+     YouTube embed URL into the matching src="" slot.
+     ============================================================ -->
+<section id="portfolio">
+  <div class="section-tag">Portfolio</div>
+  <div class="portfolio-headline">See Jeanice<br><span>in action.</span></div>
+
+  <!-- MAIN HIGHLIGHT REEL — replace src with Jeanice's YouTube embed URL -->
+  <div class="portfolio-hero">
+    <iframe
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+      title="Jeanice Ang Official Highlight Reel"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="portfolio-hero-label">Official Highlight Reel — Jeanice Ang</div>
+
+  <!-- 4 CLIP GRID — replace each src with the relevant YouTube embed URL -->
+  <div class="portfolio-grid">
+
+    <div class="portfolio-cell">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Esports clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="portfolio-cell-label">
+        <div class="portfolio-cell-cat">Esports</div>
+        <div class="portfolio-cell-name">MLBB All Star Awards</div>
+      </div>
+    </div>
+
+    <div class="portfolio-cell">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Corporate clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="portfolio-cell-label">
+        <div class="portfolio-cell-cat">Corporate</div>
+        <div class="portfolio-cell-name">CIMB Niaga Leaders Camp</div>
+      </div>
+    </div>
+
+    <div class="portfolio-cell">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Entertainment clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="portfolio-cell-label">
+        <div class="portfolio-cell-cat">Entertainment</div>
+        <div class="portfolio-cell-name">Indonesian Movie Awards</div>
+      </div>
+    </div>
+
+    <div class="portfolio-cell">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Brand clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="portfolio-cell-label">
+        <div class="portfolio-cell-cat">Brand</div>
+        <div class="portfolio-cell-name">HPE × Kawan Lama</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- BOOKING -->
 <section id="booking">
   <div class="booking-glow"></div>
@@ -341,7 +438,7 @@ function goTo(id, el) {
   el.classList.add('active');
 }
 
-const secIds = ['cover','about','services','experience','booking'];
+const secIds = ['about','services','experience','portfolio','booking'];
 const mobIds = secIds.map(id => document.getElementById('mi-'+id));
 const navLs = document.querySelectorAll('.nav-link');
 
