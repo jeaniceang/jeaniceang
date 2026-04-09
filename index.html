@@ -39,6 +39,7 @@ body{min-height:100%;background:var(--obsidian);font-family:'DM Sans',sans-serif
 
 /* SECTIONS */
 section{min-height:100vh;scroll-margin-top:60px;}
+#clients{min-height:unset !important;scroll-margin-top:60px;}
 
 /* COVER */
 #cover{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:60px;}
@@ -84,7 +85,24 @@ section{min-height:100vh;scroll-margin-top:60px;}
 .pill.purple{background:rgba(123,95,160,0.06);border-color:rgba(123,95,160,0.25);color:var(--purple);}
 .pill.dark{background:rgba(0,0,0,0.05);border-color:rgba(0,0,0,0.12);color:#444;}
 
-/* SERVICES */
+/* LOGO RIBBON */
+#clients{background:var(--obsidian);padding:48px 0;border-top:0.5px solid rgba(255,255,255,0.06);border-bottom:0.5px solid rgba(255,255,255,0.06);overflow:hidden;min-height:unset;}
+.ribbon-label{text-align:center;font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:28px;}
+.ribbon-track{display:flex;width:100%;overflow:hidden;position:relative;}
+.ribbon-track::before,.ribbon-track::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
+.ribbon-track::before{left:0;background:linear-gradient(to right,var(--obsidian),transparent);}
+.ribbon-track::after{right:0;background:linear-gradient(to left,var(--obsidian),transparent);}
+.ribbon-inner{display:flex;gap:0;animation:scroll-left 30s linear infinite;width:max-content;}
+.ribbon-inner:hover{animation-play-state:paused;}
+@keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.logo-item{display:flex;align-items:center;justify-content:center;padding:0 40px;height:56px;flex-shrink:0;}
+.logo-item img{height:32px;width:auto;object-fit:contain;opacity:0.45;filter:grayscale(100%) brightness(2);transition:opacity 0.2s,filter 0.2s;}
+.logo-item img:hover{opacity:0.9;filter:grayscale(0%) brightness(1);}
+.logo-text{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.06em;color:rgba(255,255,255,0.3);white-space:nowrap;transition:color 0.2s;cursor:default;}
+.logo-text:hover{color:rgba(255,255,255,0.7);}
+.logo-sep{color:rgba(255,255,255,0.1);margin:0 4px;font-size:18px;line-height:56px;}
+
+
 #services{background:var(--obsidian);padding:100px 64px 80px;}
 .services-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4.5vw,60px);font-weight:700;line-height:1.0;color:var(--white);margin-bottom:56px;max-width:600px;}
 .services-headline span{color:var(--gold);}
@@ -99,20 +117,20 @@ section{min-height:100vh;scroll-margin-top:60px;}
 .svc-tag.g{background:rgba(201,168,76,0.12);color:var(--gold-light);}
 .svc-tag.p{background:rgba(123,95,160,0.15);color:var(--purple-light);}
 
-/* EXPERIENCE */
-#experience{background:var(--cream);color:var(--obsidian);padding:100px 64px 80px;}
-.exp-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4.5vw,60px);font-weight:700;color:var(--obsidian);margin-bottom:56px;max-width:460px;line-height:1.05;}
+/* EXPERIENCE (inside portfolio) */
+.exp-divider{width:100%;height:0.5px;background:rgba(255,255,255,0.08);margin:80px 0 0;}
+.exp-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);font-weight:700;color:var(--white);margin:48px 0 40px;max-width:460px;line-height:1.05;}
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
-.exp-col-head{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:0.5px solid rgba(0,0,0,0.1);}
+.exp-col-head{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:0.5px solid rgba(255,255,255,0.1);}
 .exp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 .exp-dot.gold{background:var(--gold);}
 .exp-dot.purple{background:var(--purple);}
 .exp-dot.coral{background:#C0674A;}
-.exp-col-title{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#888;}
-.exp-item{padding:13px 0;border-bottom:0.5px solid rgba(0,0,0,0.06);}
+.exp-col-title{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.exp-item{padding:12px 0;border-bottom:0.5px solid rgba(255,255,255,0.06);}
 .exp-item:last-child{border-bottom:none;}
-.exp-item-name{font-size:14px;font-weight:500;color:var(--obsidian);line-height:1.4;}
-.exp-item-sub{font-size:12px;color:#999;margin-top:2px;}
+.exp-item-name{font-size:13px;font-weight:500;color:rgba(255,255,255,0.8);line-height:1.4;}
+.exp-item-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;}
 
 /* PORTFOLIO */
 #portfolio{background:var(--obsidian);padding:100px 64px 80px;}
@@ -189,7 +207,6 @@ section{min-height:100vh;scroll-margin-top:60px;}
   <div class="nav-links">
     <a class="nav-link active" href="#about">About</a>
     <a class="nav-link" href="#services">Services</a>
-    <a class="nav-link" href="#experience">Experience</a>
     <a class="nav-link" href="#portfolio">Portfolio</a>
     <a class="nav-link" href="#booking" style="background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.3);color:var(--gold-light);">Book</a>
   </div>
@@ -258,6 +275,62 @@ section{min-height:100vh;scroll-margin-top:60px;}
   </div>
 </section>
 
+<!-- LOGO RIBBON
+     TO SWAP IN REAL LOGOS: replace each <span class="logo-text"> block with:
+     <div class="logo-item"><img src="logo-filename.png" alt="Brand Name"></div>
+     Upload the logo PNG files to your GitHub repo alongside index.html.
+     Recommended: white/light PNG, transparent background, ~200px wide.
+-->
+<section id="clients">
+  <div class="ribbon-label">Trusted by</div>
+  <div class="ribbon-track">
+    <div class="ribbon-inner" id="ribbon">
+      <!-- SET 1 -->
+      <div class="logo-item"><span class="logo-text">CIMB NIAGA</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">HPE</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">MOONTON</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">GARENA</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">KONAMI</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">KEMENPAREKRAF</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">US EMBASSY</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">KOMPAS TV</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">MNC</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">KAWAN LAMA</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <!-- SET 2 — exact duplicate for seamless loop -->
+      <div class="logo-item"><span class="logo-text">CIMB NIAGA</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">HPE</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">MOONTON</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">GARENA</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">KONAMI</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">KEMENPAREKRAF</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">US EMBASSY</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">KOMPAS TV</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">MNC</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+      <div class="logo-item"><span class="logo-text">KAWAN LAMA</span></div>
+      <div class="logo-item"><span class="logo-sep">·</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="section-tag">What I do</div>
@@ -285,49 +358,67 @@ section{min-height:100vh;scroll-margin-top:60px;}
 </section>
 
 <!-- ============================================================
-     EXPERIENCE SECTION
-     
-     TO ADD A NEW EVENT: copy one of these blocks:
-     
-     <div class="exp-item">
-       <div class="exp-item-name">EVENT NAME HERE</div>
-     </div>
-     
-     OR with a subtitle:
-     
-     <div class="exp-item">
-       <div class="exp-item-name">EVENT NAME HERE</div>
-       <div class="exp-item-sub">Subtitle / detail here</div>
-     </div>
-     
-     Paste it inside the correct column (Corporate, Esports, or Entertainment).
+     PORTFOLIO + EXPERIENCE — one combined section
+
+     VIDEOS: Go to YouTube → Share → Embed → copy the URL from
+     src="..." and paste into the matching src="" below.
+
+     EVENTS: copy a .exp-item block and paste above the
+     "ADD MORE" comment in the correct column.
      ============================================================ -->
-<section id="experience">
-  <div class="section-tag">Experience</div>
+<section id="portfolio">
+
+  <!-- VIDEOS -->
+  <div class="section-tag">Portfolio</div>
+  <div class="portfolio-headline">See Jeanice<br><span>in action.</span></div>
+
+  <div class="portfolio-hero">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Jeanice Ang Official Highlight Reel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="portfolio-hero-label">Official Highlight Reel — Jeanice Ang</div>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-cell">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Esports clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="portfolio-cell-label"><div class="portfolio-cell-cat">Esports</div><div class="portfolio-cell-name">MLBB All Star Awards</div></div>
+    </div>
+    <div class="portfolio-cell">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Corporate clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="portfolio-cell-label"><div class="portfolio-cell-cat">Corporate</div><div class="portfolio-cell-name">CIMB Niaga Leaders Camp</div></div>
+    </div>
+    <div class="portfolio-cell">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Entertainment clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="portfolio-cell-label"><div class="portfolio-cell-cat">Entertainment</div><div class="portfolio-cell-name">Indonesian Movie Awards</div></div>
+    </div>
+    <div class="portfolio-cell">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Brand clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="portfolio-cell-label"><div class="portfolio-cell-cat">Brand</div><div class="portfolio-cell-name">HPE × Kawan Lama</div></div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE CREDITS -->
+  <div class="exp-divider"></div>
+  <div class="section-tag" style="margin-top:48px;">Experience</div>
   <div class="exp-headline">Trusted across<br>industries.</div>
   <div class="exp-grid">
 
-    <!-- CORPORATE & BUMN COLUMN — add events here -->
+    <!-- CORPORATE COLUMN -->
     <div class="exp-col">
       <div class="exp-col-head"><div class="exp-dot gold"></div><div class="exp-col-title">Corporate</div></div>
       <div class="exp-item"><div class="exp-item-name">Leaders Camp</div><div class="exp-item-sub">CIMB Niaga</div></div>
-      <div class="exp-item"><div class="exp-item-name">Joint Planning Session</div><div class="exp-item-sub">HPE X Kawan Lama</div></div>
+      <div class="exp-item"><div class="exp-item-name">Joint Planning Session</div><div class="exp-item-sub">HPE × Kawan Lama</div></div>
       <div class="exp-item"><div class="exp-item-name">Hari Gim Indonesia</div><div class="exp-item-sub">Kemenparekraf</div></div>
       <div class="exp-item"><div class="exp-item-name">Product Launching</div><div class="exp-item-sub">ACER Indonesia</div></div>
       <div class="exp-item"><div class="exp-item-name">Product Launching</div><div class="exp-item-sub">ASUS Predator</div></div>
       <div class="exp-item"><div class="exp-item-name">ROG Phone 7 Launch</div></div>
-      <div class="exp-item"><div class="exp-item-name">Product Enablement</div><div class="exp-item-sub">RedNote x HPE</div></div>
+      <div class="exp-item"><div class="exp-item-name">Product Enablement</div><div class="exp-item-sub">RedNote × HPE</div></div>
       <div class="exp-item"><div class="exp-item-name">Gamers Gathering</div><div class="exp-item-sub">NVIDIA</div></div>
       <div class="exp-item"><div class="exp-item-name">Taiwan Excellence Indonesia</div></div>
       <div class="exp-item"><div class="exp-item-name">Lazada Cyber Combat</div></div>
-
-
-
-
       <!-- ADD MORE CORPORATE EVENTS BELOW THIS LINE -->
     </div>
 
-    <!-- ESPORTS & GAMING COLUMN — add events here -->
+    <!-- INTERNATIONAL & BILINGUAL COLUMN -->
     <div class="exp-col">
       <div class="exp-col-head"><div class="exp-dot purple"></div><div class="exp-col-title">International & Bilingual</div></div>
       <div class="exp-item"><div class="exp-item-name">US Embassy Esports Program</div></div>
@@ -339,14 +430,13 @@ section{min-height:100vh;scroll-margin-top:60px;}
       <div class="exp-item"><div class="exp-item-name">Creator Super Fest</div></div>
       <div class="exp-item"><div class="exp-item-name">MSC 2021 English Broadcast</div></div>
       <div class="exp-item"><div class="exp-item-name">Gala Dinner</div><div class="exp-item-sub">Indonesia Diecast Expo</div></div>
-      <div class="exp-item"><div class="exp-item-name">K-Con Press Conference</div><div class="exp-item-sub">K-Con</div></div>
-
-      <!-- ADD MORE ESPORTS EVENTS BELOW THIS LINE -->
+      <div class="exp-item"><div class="exp-item-name">K-Con Press Conference</div></div>
+      <!-- ADD MORE INTERNATIONAL EVENTS BELOW THIS LINE -->
     </div>
 
-    <!-- ENTERTAINMENT & LIFESTYLE COLUMN — add events here -->
+    <!-- BROADCAST, BRAND & LARGE-SCALE COLUMN -->
     <div class="exp-col">
-      <div class="exp-col-head"><div class="exp-dot coral"></div><div class="exp-col-title">Broadcast, Brand, and Large-Scale Events</div></div>
+      <div class="exp-col-head"><div class="exp-dot coral"></div><div class="exp-col-title">Broadcast, Brand & Large-Scale</div></div>
       <div class="exp-item"><div class="exp-item-name">Good Gamer</div><div class="exp-item-sub">Kompas TV</div></div>
       <div class="exp-item"><div class="exp-item-name">C News Infotainment</div><div class="exp-item-sub">MNC</div></div>
       <div class="exp-item"><div class="exp-item-name">Red Carpet</div><div class="exp-item-sub">Indonesian Movie Awards</div></div>
@@ -360,74 +450,7 @@ section{min-height:100vh;scroll-margin-top:60px;}
       <div class="exp-item"><div class="exp-item-name">BEMANI Esports Championship</div><div class="exp-item-sub">Konami</div></div>
       <div class="exp-item"><div class="exp-item-name">Freefire Indonesia Masters</div><div class="exp-item-sub">Garena</div></div>
       <div class="exp-item"><div class="exp-item-name">MLBB Allstars</div><div class="exp-item-sub">Moonton</div></div>
-      
-      <!-- ADD MORE ENTERTAINMENT EVENTS BELOW THIS LINE -->
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================================
-     PORTFOLIO SECTION
-
-     TO SWAP IN A YOUTUBE VIDEO:
-     1. Go to the YouTube video
-     2. Click Share → Embed
-     3. Copy just the URL from src="..." — looks like:
-        https://www.youtube.com/embed/XXXXXXXXXXX
-     4. Paste it into the src="" below
-
-     For the 4 smaller clips, same process — just paste each
-     YouTube embed URL into the matching src="" slot.
-     ============================================================ -->
-<section id="portfolio">
-  <div class="section-tag">Portfolio</div>
-  <div class="portfolio-headline">See Jeanice<br><span>in action.</span></div>
-
-  <!-- MAIN HIGHLIGHT REEL — replace src with Jeanice's YouTube embed URL -->
-  <div class="portfolio-hero">
-    <iframe
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-      title="Jeanice Ang Official Highlight Reel"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-  <div class="portfolio-hero-label">Official Highlight Reel — Jeanice Ang</div>
-
-  <!-- 4 CLIP GRID — replace each src with the relevant YouTube embed URL -->
-  <div class="portfolio-grid">
-
-    <div class="portfolio-cell">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Esports clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="portfolio-cell-label">
-        <div class="portfolio-cell-cat">Esports</div>
-        <div class="portfolio-cell-name">MLBB All Star Awards</div>
-      </div>
-    </div>
-
-    <div class="portfolio-cell">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Corporate clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="portfolio-cell-label">
-        <div class="portfolio-cell-cat">Corporate</div>
-        <div class="portfolio-cell-name">CIMB Niaga Leaders Camp</div>
-      </div>
-    </div>
-
-    <div class="portfolio-cell">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Entertainment clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="portfolio-cell-label">
-        <div class="portfolio-cell-cat">Entertainment</div>
-        <div class="portfolio-cell-name">Indonesian Movie Awards</div>
-      </div>
-    </div>
-
-    <div class="portfolio-cell">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Brand clip" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="portfolio-cell-label">
-        <div class="portfolio-cell-cat">Brand</div>
-        <div class="portfolio-cell-name">HPE × Kawan Lama</div>
-      </div>
+      <!-- ADD MORE BROADCAST/BRAND EVENTS BELOW THIS LINE -->
     </div>
 
   </div>
@@ -463,7 +486,7 @@ function goTo(id, el) {
   el.classList.add('active');
 }
 
-const secIds = ['about','services','experience','portfolio','booking'];
+const secIds = ['about','services','portfolio','booking'];
 const mobIds = secIds.map(id => document.getElementById('mi-'+id));
 const navLs = document.querySelectorAll('.nav-link');
 
