@@ -1,1 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Jeanice Ang — Get a Quote</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+  --obsidian:#0D0D0D;
+  --gold:#C9A84C;
+  --gold-light:#E8CC80;
+  --purple:#7B5FA0;
+  --purple-light:#A883D4;
+  --cream:#F8F4EE;
+  --white:#FFFFFF;
+}
+html{height:100%;}
+body{min-height:100%;background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--white);overflow-x:hidden;}
 
+/* NAV */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:0.5px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;}
+.nav-left{display:flex;align-items:center;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;letter-spacing:0.15em;color:var(--gold);text-decoration:none;}
+.nav-tagline{font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.08em;margin-left:12px;border-left:0.5px solid rgba(255,255,255,0.1);padding-left:12px;}
+.nav-back{font-size:12px;font-weight:500;color:rgba(255,255,255,0.45);text-decoration:none;border:0.5px solid rgba(255,255,255,0.12);padding:7px 16px;border-radius:20px;transition:all 0.2s;}
+.nav-back:hover{color:var(--white);border-color:rgba(255,255,255,0.3);}
+
+/* SCREENS */
+.screen{display:none;min-height:100vh;flex-direction:column;}
+.screen.active{display:flex;}
+
+/* ── INTRO SCREEN ── */
+.intro-screen{background:var(--obsidian);}
+.intro-inner{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:60px;}
+.intro-photo{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(123,95,160,0.15),rgba(201,168,76,0.07));}
+.intro-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+/* TO SWAP PHOTO: change src="Jeanice.jpeg" to your new filename e.g. src="Jeanice2.jpeg" */
+.intro-text{display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px;position:relative;}
+.intro-glow{position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.intro-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border-left:2px solid var(--gold);padding-left:12px;margin-bottom:24px;display:inline-block;}
+.intro-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,68px);font-weight:700;line-height:0.95;color:var(--white);margin-bottom:16px;}
+.intro-title span{color:var(--gold);}
+.intro-sub{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;font-weight:300;color:rgba(255,255,255,0.4);margin-bottom:36px;line-height:1.6;max-width:360px;}
+.intro-btns{display:flex;flex-direction:column;gap:10px;max-width:340px;}
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:var(--obsidian);font-size:14px;font-weight:500;padding:16px 24px;border-radius:12px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:opacity 0.2s;text-decoration:none;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.5);font-size:13px;font-weight:500;padding:14px 24px;border-radius:12px;border:0.5px solid rgba(255,255,255,0.12);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;text-decoration:none;}
+.btn-secondary:hover{color:var(--white);border-color:rgba(255,255,255,0.3);}
+.intro-cover-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--purple),transparent);}
+
+/* ── QUIZ SCREEN ── */
+.quiz-screen{background:var(--obsidian);align-items:center;padding:100px 24px 64px;}
+
+/* PROGRESS */
+.progress-wrap{width:100%;max-width:540px;margin-bottom:48px;}
+.progress-meta{display:flex;justify-content:space-between;margin-bottom:10px;}
+.progress-label{font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.progress-count{font-size:10px;color:rgba(255,255,255,0.2);}
+.progress-track{height:2px;background:rgba(255,255,255,0.08);border-radius:2px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--purple));border-radius:2px;transition:width 0.4s ease;}
+
+/* STEPS */
+.step{display:none;width:100%;max-width:540px;animation:fadeUp 0.3s ease;}
+.step.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.step-q{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,44px);font-weight:700;line-height:1.05;color:var(--white);margin-bottom:8px;}
+.step-q span{color:var(--gold);}
+.step-hint{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:28px;line-height:1.5;}
+
+/* OPTIONS */
+.opts{display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.09);border-radius:14px;padding:18px 20px;cursor:pointer;transition:all 0.2s;user-select:none;}
+.opt:hover{border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.04);}
+.opt.selected{border-color:var(--gold);background:rgba(201,168,76,0.08);}
+.opt-icon{font-size:22px;flex-shrink:0;width:32px;text-align:center;}
+.opt-body{flex:1;}
+.opt-title{font-size:15px;font-weight:500;color:var(--white);}
+.opt-sub{font-size:12px;color:rgba(255,255,255,0.35);margin-top:2px;}
+.opt-check{width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.opt.selected .opt-check{background:var(--gold);border-color:var(--gold);}
+.opt-check-dot{width:6px;height:6px;border-radius:50%;background:var(--obsidian);opacity:0;transition:opacity 0.2s;}
+.opt.selected .opt-check-dot{opacity:1;}
+
+/* MULTI */
+.opt.multi.selected{border-color:var(--purple-light);background:rgba(123,95,160,0.08);}
+.opt.multi.selected .opt-check{background:var(--purple-light);border-color:var(--purple-light);border-radius:5px;}
+.opt.multi .opt-check{border-radius:5px;}
+.opt-check-tick{font-size:11px;font-weight:700;color:var(--obsidian);display:none;}
+.opt.multi.selected .opt-check-tick{display:block;}
+.opt.multi .opt-check-dot{display:block;}
+.opt.multi.selected .opt-check-dot{display:none;}
+
+/* NEXT BTN */
+.next-btn{margin-top:20px;width:100%;padding:15px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;border:none;border-radius:12px;transition:all 0.2s;}
+.next-btn.muted{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.25);border:0.5px solid rgba(255,255,255,0.08);cursor:default;}
+.next-btn.ready{background:var(--gold);color:var(--obsidian);cursor:pointer;}
+.next-btn.ready:hover{opacity:0.85;}
+
+/* ── RESULT SCREEN ── */
+.result-screen{background:var(--obsidian);}
+.result-inner{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:60px;}
+.result-photo{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(123,95,160,0.15),rgba(201,168,76,0.07));}
+.result-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+.result-text{display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px;overflow-y:auto;}
+.result-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.result-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1.0;color:var(--white);margin-bottom:24px;}
+.result-title span{color:var(--gold);}
+.breakdown{background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.09);border-radius:14px;overflow:hidden;margin-bottom:12px;}
+.b-row{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-bottom:0.5px solid rgba(255,255,255,0.05);}
+.b-row:last-child{border-bottom:none;}
+.b-label{font-size:12px;color:rgba(255,255,255,0.5);}
+.b-val{font-size:12px;font-weight:500;color:var(--white);}
+.total-row{display:flex;justify-content:space-between;align-items:center;background:rgba(201,168,76,0.08);border:0.5px solid rgba(201,168,76,0.2);border-radius:14px;padding:16px 20px;margin-bottom:16px;}
+.total-label{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.total-val{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:var(--gold);}
+.result-note{font-size:11px;color:rgba(255,255,255,0.25);line-height:1.7;margin-bottom:20px;}
+.result-btns{display:flex;flex-direction:column;gap:10px;}
+.result-cover-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--purple),var(--gold),transparent);}
+.btn-ghost{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.4);font-size:12px;font-weight:500;padding:13px 20px;border-radius:12px;border:0.5px solid rgba(255,255,255,0.1);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;text-decoration:none;}
+.btn-ghost:hover{color:var(--white);border-color:rgba(255,255,255,0.25);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .top-nav{padding:0 16px;height:52px;}
+  .nav-tagline{display:none;}
+  .intro-inner,.result-inner{grid-template-columns:1fr;padding-top:52px;}
+  .intro-photo,.result-photo{min-height:55vw;max-height:340px;order:1;}
+  .intro-text,.result-text{order:2;padding:36px 24px 56px;}
+  .quiz-screen{padding:84px 20px 48px;}
+  .intro-btns{max-width:100%;}
+}
+@media(max-width:480px){
+  .intro-title,.result-title{font-size:clamp(34px,10vw,48px);}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="nav-left">
+    <a class="nav-logo" href="../">JEANICE ANG</a>
+    <span class="nav-tagline">Bilingual MC · Jakarta</span>
+  </div>
+  <a class="nav-back" href="../">← Media Kit</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+     SCREEN 1: INTRO
+══════════════════════════════════════ -->
+<div class="screen active" id="screenIntro">
+  <div class="intro-inner">
+    <div class="intro-photo">
+      <!-- TO SWAP PHOTO: change Jeanice.jpeg to your new filename -->
+      <img src="../Jeanice.jpeg" alt="Jeanice Ang">
+      <div class="intro-cover-bar"></div>
+    </div>
+    <div class="intro-text">
+      <div class="intro-glow"></div>
+      <div class="intro-eyebrow">Pricing</div>
+      <div class="intro-title">Let's find<br>your <span>rate.</span></div>
+      <div class="intro-sub">Answer 4 quick questions and get an instant estimate — no waiting, no back-and-forth.</div>
+      <div class="intro-btns">
+        <button class="btn-primary" onclick="startQuiz()">Get my estimate →</button>
+        <!-- TO UPDATE: replace # with your Google Drive PDF link -->
+        <a class="btn-secondary" href="#" target="_blank">📄 Download rate card PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 2: QUIZ
+══════════════════════════════════════ -->
+<div class="screen" id="screenQuiz">
+  <div class="quiz-screen">
+
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-label" id="progressLabel">Event type</span>
+        <span class="progress-count" id="progressCount">1 / 4</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:25%"></div>
+      </div>
+    </div>
+
+    <!-- Q1: Event type -->
+    <div class="step active" id="step1">
+      <div class="step-q">What type of<br><span>event</span> is it?</div>
+      <div class="step-hint">Pick the one that best describes your event.</div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,1,'Corporate / BUMN')">
+          <div class="opt-icon">🏢</div>
+          <div class="opt-body"><div class="opt-title">Corporate / BUMN</div><div class="opt-sub">Conferences, award nights, product launches</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+        <div class="opt" onclick="pick(this,1,'Broadcast & Large-Scale')">
+          <div class="opt-icon">📡</div>
+          <div class="opt-body"><div class="opt-title">Broadcast & Large-Scale</div><div class="opt-sub">Grand finals, award shows, live broadcast</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+        <div class="opt" onclick="pick(this,1,'Brand Activation')">
+          <div class="opt-icon">✨</div>
+          <div class="opt-body"><div class="opt-title">Brand Activation</div><div class="opt-sub">Experiential marketing, on-stage & on-camera</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2: Language -->
+    <div class="step" id="step2">
+      <div class="step-q">What's the<br><span>language?</span></div>
+      <div class="step-hint">Bilingual events include an add-on for English hosting.</div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,2,'Indonesian')">
+          <div class="opt-icon">🇮🇩</div>
+          <div class="opt-body"><div class="opt-title">Indonesian only</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+        <div class="opt" onclick="pick(this,2,'Bilingual (EN + ID)')">
+          <div class="opt-icon">🌏</div>
+          <div class="opt-body"><div class="opt-title">Bilingual (EN + ID)</div><div class="opt-sub">+ Rp 1.000.000</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3: Duration -->
+    <div class="step" id="step3">
+      <div class="step-q">How long is<br><span>the event?</span></div>
+      <div class="step-hint">Jeanice's on-stage / on-camera time.</div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,3,'Half Day')">
+          <div class="opt-icon">🌤️</div>
+          <div class="opt-body"><div class="opt-title">Half Day</div><div class="opt-sub">Up to 4 hours · includes script review</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+        <div class="opt" onclick="pick(this,3,'Full Day')">
+          <div class="opt-icon">☀️</div>
+          <div class="opt-body"><div class="opt-title">Full Day</div><div class="opt-sub">Up to 8 hours · includes rehearsal</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: Add-ons -->
+    <div class="step" id="step4">
+      <div class="step-q">Any<br><span>add-ons?</span></div>
+      <div class="step-hint">Select all that apply.</div>
+      <div class="opts">
+        <div class="opt multi" onclick="toggle(this,'Dedicated rehearsal slot',1500000)">
+          <div class="opt-icon">🎙️</div>
+          <div class="opt-body"><div class="opt-title">Dedicated rehearsal slot</div><div class="opt-sub">+ Rp 1.500.000</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
+        </div>
+        <div class="opt multi" onclick="toggle(this,'Extra hour',1500000)">
+          <div class="opt-icon">⏱️</div>
+          <div class="opt-body"><div class="opt-title">Extra hour (beyond package)</div><div class="opt-sub">+ Rp 1.500.000 per hour</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
+        </div>
+        <div class="opt multi" onclick="toggle(this,'Outside Jabodetabek',2000000)">
+          <div class="opt-icon">✈️</div>
+          <div class="opt-body"><div class="opt-title">Outside Jabodetabek</div><div class="opt-sub">+ Rp 2.000.000 · travel & accommodation by client</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
+        </div>
+        <div class="opt multi" onclick="toggle(this,'International travel',0)">
+          <div class="opt-icon">🌍</div>
+          <div class="opt-body"><div class="opt-title">International travel</div><div class="opt-sub">Rate discussed separately</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
+        </div>
+        <div class="opt" id="noAddonOpt" onclick="pickNoAddon(this)">
+          <div class="opt-icon">—</div>
+          <div class="opt-body"><div class="opt-title">No add-ons</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+      </div>
+      <button class="next-btn muted" id="addonsBtn" onclick="showResult()">See my estimate →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCREEN 3: RESULT
+══════════════════════════════════════ -->
+<div class="screen" id="screenResult">
+  <div class="result-inner">
+    <div class="result-photo">
+      <!-- TO SWAP PHOTO: change Jeanice.jpeg to your new filename -->
+      <img src="../Jeanice.jpeg" alt="Jeanice Ang">
+      <div class="result-cover-bar"></div>
+    </div>
+    <div class="result-text">
+      <div class="result-eyebrow">Your estimate</div>
+      <div class="result-title">Here's your<br><span>quote.</span></div>
+      <div class="breakdown" id="breakdownRows"></div>
+      <div class="total-row">
+        <div class="total-label">Estimated total</div>
+        <div class="total-val" id="totalVal">Rp 0</div>
+      </div>
+      <div class="result-note">Indicative estimate only. Final rate confirmed upon receipt of full event brief. Tax (PPh 21 / PPN) may apply. International travel negotiated separately.</div>
+      <div class="result-btns">
+        <a class="btn-primary" id="waBtn" href="#" target="_blank">💬 Send brief via WhatsApp</a>
+        <!-- TO UPDATE: replace # with your Google Drive PDF link -->
+        <a class="btn-secondary" href="#" target="_blank">📄 Download rate card PDF</a>
+        <button class="btn-ghost" onclick="restart()">← Start over</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// RATES — change these numbers to update pricing
+// ============================================================
+const RATES = {
+  'Corporate / BUMN':        { 'Half Day': 6000000,  'Full Day': 10000000 },
+  'Broadcast & Large-Scale': { 'Half Day': 8000000,  'Full Day': 13000000 },
+  'Brand Activation':        { 'Half Day': 8000000,  'Full Day': 13000000 },
+};
+const BILINGUAL_ADD = 1000000;
+// ============================================================
+
+const STEP_LABELS = ['Event type','Language','Duration','Add-ons'];
+let cur = 0;
+let state = { type: null, lang: null, duration: null, addons: [] };
+
+function startQuiz() {
+  document.getElementById('screenIntro').classList.remove('active');
+  document.getElementById('screenQuiz').classList.add('active');
+  window.scrollTo({ top: 0 });
+}
+
+function pick(el, step, val) {
+  el.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  if (step === 1) state.type = val;
+  else if (step === 2) state.lang = val;
+  else if (step === 3) state.duration = val;
+  setTimeout(nextStep, 260);
+}
+
+function toggle(el, label, val) {
+  // Deselect "no add-ons" if a real add-on is picked
+  document.getElementById('noAddonOpt').classList.remove('selected');
+
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) {
+    if (!state.addons.find(a => a.label === label)) state.addons.push({ label, val });
+  } else {
+    state.addons = state.addons.filter(a => a.label !== label);
+  }
+  document.getElementById('addonsBtn').classList.remove('muted');
+  document.getElementById('addonsBtn').classList.add('ready');
+}
+
+function pickNoAddon(el) {
+  // Deselect all multi options
+  document.querySelectorAll('#step4 .opt.multi').forEach(o => o.classList.remove('selected'));
+  state.addons = [];
+  el.classList.add('selected');
+  document.getElementById('addonsBtn').classList.remove('muted');
+  document.getElementById('addonsBtn').classList.add('ready');
+}
+
+function nextStep() {
+  document.getElementById('step' + (cur + 1)).classList.remove('active');
+  cur++;
+  document.getElementById('step' + (cur + 1)).classList.add('active');
+  setProgress(cur);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setProgress(idx) {
+  document.getElementById('progressFill').style.width = ((idx + 1) / 4 * 100) + '%';
+  document.getElementById('progressLabel').textContent = STEP_LABELS[idx];
+  document.getElementById('progressCount').textContent = (idx + 1) + ' / 4';
+}
+
+function showResult() {
+  const base = RATES[state.type][state.duration];
+  let total = base;
+  let rows = `<div class="b-row"><span class="b-label">${state.type} · ${state.duration}</span><span class="b-val">${fmt(base)}</span></div>`;
+
+  if (state.lang === 'Bilingual (EN + ID)') {
+    total += BILINGUAL_ADD;
+    rows += `<div class="b-row"><span class="b-label">Bilingual hosting (EN + ID)</span><span class="b-val">+ ${fmt(BILINGUAL_ADD)}</span></div>`;
+  }
+
+  let hasIntl = false;
+  state.addons.forEach(a => {
+    if (a.label === 'International travel') {
+      hasIntl = true;
+      rows += `<div class="b-row"><span class="b-label">International travel</span><span class="b-val" style="font-style:italic;color:rgba(255,255,255,0.3)">To discuss</span></div>`;
+    } else {
+      total += a.val;
+      rows += `<div class="b-row"><span class="b-label">${a.label}</span><span class="b-val">+ ${fmt(a.val)}</span></div>`;
+    }
+  });
+
+  document.getElementById('breakdownRows').innerHTML = rows;
+  document.getElementById('totalVal').textContent = fmt(total) + (hasIntl ? ' +' : '');
+
+  const addonsText = state.addons.length ? '\nAdd-ons: ' + state.addons.map(a => a.label).join(', ') : '';
+  const msg = encodeURIComponent(
+    'Hi, I\'m interested to book Jeanice Ang!\n\n' +
+    'Event type: ' + state.type + '\n' +
+    'Language: ' + state.lang + '\n' +
+    'Duration: ' + state.duration +
+    addonsText + '\n' +
+    'Estimate: ' + fmt(total) + '\n\n' +
+    'Please send me more details. Thank you!'
+  );
+  document.getElementById('waBtn').href = 'https://wa.me/62817791879?text=' + msg;
+
+  document.getElementById('screenQuiz').classList.remove('active');
+  document.getElementById('screenResult').classList.add('active');
+  window.scrollTo({ top: 0 });
+}
+
+function fmt(n) { return 'Rp ' + n.toLocaleString('id-ID'); }
+
+function restart() {
+  state = { type: null, lang: null, duration: null, addons: [] };
+  cur = 0;
+  for (let i = 1; i <= 4; i++) document.getElementById('step' + i).classList.remove('active');
+  document.getElementById('step1').classList.add('active');
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  const btn = document.getElementById('addonsBtn');
+  btn.classList.remove('ready');
+  btn.classList.add('muted');
+  setProgress(0);
+  document.getElementById('screenResult').classList.remove('active');
+  document.getElementById('screenIntro').classList.add('active');
+  window.scrollTo({ top: 0 });
+}
+</script>
+</body>
+</html>
