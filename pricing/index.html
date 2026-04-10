@@ -121,7 +121,7 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
 /* ── RESULT ── */
 .result-inner{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:60px;overflow:hidden;}
 .result-photo{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(123,95,160,0.15),rgba(201,168,76,0.07));min-height:calc(100vh - 60px);}
-.result-photo img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;position:absolute;top:0;left:0;}
+.result-photo img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;position:absolute;top:0;left:0;}
 .result-cover-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--purple),var(--gold),transparent);z-index:2;}
 .result-text{display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px;}
 .result-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
@@ -312,12 +312,12 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
 
         <div class="field-group">
           <div class="field-label">WhatsApp number</div>
-          <input class="field-input" id="fieldWA" type="tel" placeholder="+62 8xx xxxx xxxx" autocomplete="tel">
+          <input class="field-input" id="fieldWA" type="tel" placeholder="6281x xxxx xxxx" autocomplete="tel">
         </div>
 
         <div class="field-group">
           <div class="field-label">Event date (approximate)</div>
-          <input class="field-input" id="fieldDate" type="date">
+          <input class="field-input" id="fieldDate" type="text" placeholder="DD / MM / YYYY" maxlength="14" autocomplete="off">
         </div>
 
         <div class="field-group">
@@ -505,16 +505,13 @@ async function submitAndShow() {
     total: fmt(total),
   };
 
+  // Send to Google Sheets via GET request (most reliable with Apps Script)
   try {
-    await fetch(SHEETS_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    const params = new URLSearchParams(payload).toString();
+    const img = new Image();
+    img.src = SHEETS_URL + '?' + params;
   } catch (e) {
-    // no-cors means we can't read response, but data still sends
-    console.log('Sent to sheets');
+    console.log('Sheets error:', e);
   }
 
   // Build WA message
