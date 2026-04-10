@@ -17,13 +17,7 @@
   --white:#FFFFFF;
 }
 html{height:100%;}
-body{
-  background:var(--obsidian);
-  font-family:'DM Sans',sans-serif;
-  color:var(--white);
-  overflow-x:hidden;
-  width:100%;
-}
+body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--white);overflow-x:hidden;width:100%;}
 
 /* NAV */
 .top-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:0.5px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;}
@@ -33,31 +27,16 @@ body{
 .nav-back{font-size:12px;font-weight:500;color:rgba(255,255,255,0.45);text-decoration:none;border:0.5px solid rgba(255,255,255,0.12);padding:7px 16px;border-radius:20px;transition:all 0.2s;}
 .nav-back:hover{color:var(--white);border-color:rgba(255,255,255,0.3);}
 
-/* SCREENS — no forced height, just hide/show */
+/* SCREENS */
 .screen{display:none;}
 .screen.active{display:block;}
 
-/* ── INTRO SCREEN ── */
-.intro-inner{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:100vh;
-  padding-top:60px;
-  overflow:hidden;
-}
-.intro-photo{
-  position:relative;overflow:hidden;
-  background:linear-gradient(160deg,rgba(123,95,160,0.15),rgba(201,168,76,0.07));
-  min-height:calc(100vh - 60px);
-}
+/* ── INTRO ── */
+.intro-inner{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:60px;overflow:hidden;}
+.intro-photo{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(123,95,160,0.15),rgba(201,168,76,0.07));min-height:calc(100vh - 60px);}
 .intro-photo img{width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;position:absolute;top:0;left:0;}
 .intro-cover-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--purple),transparent);z-index:2;}
-.intro-text{
-  display:flex;flex-direction:column;justify-content:center;
-  padding:60px 56px 60px 64px;
-  position:relative;
-  overflow:hidden;
-}
+.intro-text{display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px;position:relative;overflow:hidden;}
 .intro-glow{position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
 .intro-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border-left:2px solid var(--gold);padding-left:12px;margin-bottom:24px;display:inline-block;}
 .intro-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,68px);font-weight:700;line-height:0.95;color:var(--white);margin-bottom:16px;}
@@ -68,19 +47,14 @@ body{
 /* BUTTONS */
 .btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:var(--obsidian);font-size:14px;font-weight:500;padding:16px 24px;border-radius:12px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:opacity 0.2s;text-decoration:none;width:100%;}
 .btn-primary:hover{opacity:0.85;}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed;}
 .btn-secondary{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.5);font-size:13px;font-weight:500;padding:14px 24px;border-radius:12px;border:0.5px solid rgba(255,255,255,0.12);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;text-decoration:none;width:100%;}
 .btn-secondary:hover{color:var(--white);border-color:rgba(255,255,255,0.3);}
 .btn-ghost{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.4);font-size:12px;font-weight:500;padding:13px 20px;border-radius:12px;border:0.5px solid rgba(255,255,255,0.1);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;text-decoration:none;width:100%;}
 .btn-ghost:hover{color:var(--white);border-color:rgba(255,255,255,0.25);}
 
-/* ── QUIZ SCREEN ── */
-.quiz-inner{
-  display:flex;flex-direction:column;align-items:center;
-  padding:100px 24px 64px;
-  min-height:100vh;
-}
-
-/* PROGRESS */
+/* ── QUIZ ── */
+.quiz-inner{display:flex;flex-direction:column;align-items:center;padding:100px 24px 64px;min-height:100vh;}
 .progress-wrap{width:100%;max-width:540px;margin-bottom:48px;}
 .progress-meta{display:flex;justify-content:space-between;margin-bottom:10px;}
 .progress-label{font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
@@ -92,7 +66,7 @@ body{
 .step{display:none;width:100%;max-width:540px;animation:fadeUp 0.3s ease;}
 .step.active{display:block;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-.step-q{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,44px);font-weight:700;line-height:1.05;color:var(--white);margin-bottom:8px;}
+.step-q{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,42px);font-weight:700;line-height:1.05;color:var(--white);margin-bottom:8px;}
 .step-q span{color:var(--gold);}
 .step-hint{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:28px;line-height:1.5;}
 
@@ -109,8 +83,6 @@ body{
 .opt.selected .opt-check{background:var(--gold);border-color:var(--gold);}
 .opt-check-dot{width:6px;height:6px;border-radius:50%;background:var(--obsidian);opacity:0;transition:opacity 0.2s;}
 .opt.selected .opt-check-dot{opacity:1;}
-
-/* MULTI */
 .opt.multi.selected{border-color:var(--purple-light);background:rgba(123,95,160,0.08);}
 .opt.multi.selected .opt-check{background:var(--purple-light);border-color:var(--purple-light);border-radius:5px;}
 .opt.multi .opt-check{border-radius:5px;}
@@ -125,25 +97,33 @@ body{
 .next-btn.ready{background:var(--gold);color:var(--obsidian);cursor:pointer;}
 .next-btn.ready:hover{opacity:0.85;}
 
-/* ── RESULT SCREEN ── */
-.result-inner{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:100vh;
-  padding-top:60px;
-  overflow:hidden;
-}
-.result-photo{
-  position:relative;overflow:hidden;
-  background:linear-gradient(160deg,rgba(123,95,160,0.15),rgba(201,168,76,0.07));
-  min-height:calc(100vh - 60px);
-}
-.result-photo img{width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;position:absolute;top:0;left:0;}
+/* FORM FIELDS (Q5) */
+.form-fields{display:flex;flex-direction:column;gap:14px;margin-bottom:4px;}
+.field-group{display:flex;flex-direction:column;gap:6px;}
+.field-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.field-input{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--white);outline:none;width:100%;transition:border-color 0.2s;-webkit-appearance:none;}
+.field-input::placeholder{color:rgba(255,255,255,0.2);}
+.field-input:focus{border-color:rgba(201,168,76,0.4);}
+.field-input[type="date"]{color-scheme:dark;}
+.type-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.type-opt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.09);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all 0.2s;user-select:none;}
+.type-opt:hover{border-color:rgba(201,168,76,0.3);}
+.type-opt.selected{border-color:var(--gold);background:rgba(201,168,76,0.08);}
+.type-opt-icon{font-size:18px;}
+.type-opt-label{font-size:13px;font-weight:500;color:var(--white);}
+
+/* SUBMIT BTN */
+.submit-btn{margin-top:20px;width:100%;padding:16px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;border:none;border-radius:12px;background:var(--gold);color:var(--obsidian);cursor:pointer;transition:opacity 0.2s;}
+.submit-btn:hover{opacity:0.85;}
+.submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.submit-loading{display:none;text-align:center;font-size:13px;color:rgba(255,255,255,0.4);margin-top:16px;}
+
+/* ── RESULT ── */
+.result-inner{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:60px;overflow:hidden;}
+.result-photo{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(123,95,160,0.15),rgba(201,168,76,0.07));min-height:calc(100vh - 60px);}
+.result-photo img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;position:absolute;top:0;left:0;}
 .result-cover-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--purple),var(--gold),transparent);z-index:2;}
-.result-text{
-  display:flex;flex-direction:column;justify-content:center;
-  padding:60px 56px 60px 64px;
-}
+.result-text{display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px;}
 .result-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
 .result-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:700;line-height:1.0;color:var(--white);margin-bottom:24px;}
 .result-title span{color:var(--gold);}
@@ -162,53 +142,18 @@ body{
 @media(max-width:900px){
   .top-nav{padding:0 16px;height:52px;}
   .nav-tagline{display:none;}
-
-  /* Intro — stack vertically, photo on top */
-  .intro-inner{
-    grid-template-columns:1fr;
-    min-height:unset;
-    padding-top:52px;
-  }
-  .intro-photo{
-    min-height:90vw;
-    max-height:520px;
-    position:relative;
-    order:1;
-  }
-  .intro-photo img{position:absolute;top:0;left:0;width:100%;height:100%;}
-  .intro-text{
-    order:2;
-    padding:36px 24px 56px;
-    justify-content:flex-start;
-  }
+  .intro-inner,.result-inner{grid-template-columns:1fr;min-height:unset;padding-top:52px;}
+  .intro-photo,.result-photo{min-height:90vw;max-height:520px;position:relative;order:1;}
+  .intro-photo img,.result-photo img{position:absolute;top:0;left:0;width:100%;height:100%;}
+  .intro-text,.result-text{order:2;padding:36px 24px 56px;justify-content:flex-start;}
   .intro-btns{max-width:100%;}
-
-  /* Quiz */
   .quiz-inner{padding:84px 20px 48px;}
-
-  /* Result — stack vertically, photo on top */
-  .result-inner{
-    grid-template-columns:1fr;
-    min-height:unset;
-    padding-top:52px;
-  }
-  .result-photo{
-    min-height:90vw;
-    max-height:520px;
-    position:relative;
-    order:1;
-  }
-  .result-photo img{position:absolute;top:0;left:0;width:100%;height:100%;}
-  .result-text{
-    order:2;
-    padding:36px 24px 56px;
-    justify-content:flex-start;
-  }
+  .type-opts{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:480px){
   .intro-title,.result-title{font-size:clamp(34px,10vw,48px);}
-  .intro-sub{font-size:15px;}
   .total-val{font-size:28px;}
+  .type-opts{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -222,13 +167,10 @@ body{
   <a class="nav-back" href="../">← Media Kit</a>
 </nav>
 
-<!-- ══════════════════════════════════════
-     SCREEN 1: INTRO
-══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════ INTRO ══════════════════════════════════════ -->
 <div class="screen active" id="screenIntro">
   <div class="intro-inner">
     <div class="intro-photo">
-      <!-- TO SWAP PHOTO: change jeanice2.jpeg to any filename in your repo -->
       <img src="../jeanice2.jpeg" alt="Jeanice Ang">
       <div class="intro-cover-bar"></div>
     </div>
@@ -236,29 +178,26 @@ body{
       <div class="intro-glow"></div>
       <div class="intro-eyebrow">Pricing</div>
       <div class="intro-title">Let's find<br>your <span>rate.</span></div>
-      <div class="intro-sub">Answer 4 quick questions and get an instant estimate — no waiting, no back-and-forth.</div>
+      <div class="intro-sub">Answer 5 quick questions and get an instant estimate — no waiting, no back-and-forth.</div>
       <div class="intro-btns">
         <button class="btn-primary" onclick="startQuiz()">Get my estimate →</button>
-        <!-- TO UPDATE: replace # with your Google Drive PDF link -->
         <a class="btn-secondary" href="#" target="_blank">📄 Download rate card PDF</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     SCREEN 2: QUIZ
-══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════ QUIZ ══════════════════════════════════════ -->
 <div class="screen" id="screenQuiz">
   <div class="quiz-inner">
 
     <div class="progress-wrap">
       <div class="progress-meta">
         <span class="progress-label" id="progressLabel">Event type</span>
-        <span class="progress-count" id="progressCount">1 / 4</span>
+        <span class="progress-count" id="progressCount">1 / 5</span>
       </div>
       <div class="progress-track">
-        <div class="progress-fill" id="progressFill" style="width:25%"></div>
+        <div class="progress-fill" id="progressFill" style="width:20%"></div>
       </div>
     </div>
 
@@ -352,19 +291,61 @@ body{
           <div class="opt-check"><div class="opt-check-dot"></div></div>
         </div>
       </div>
-      <button class="next-btn muted" id="addonsBtn" onclick="showResult()">See my estimate →</button>
+      <button class="next-btn muted" id="addonsBtn" onclick="goToDetails()">Next →</button>
+    </div>
+
+    <!-- Q5: Details -->
+    <div class="step" id="step5">
+      <div class="step-q">Almost there —<br><span>tell us about you.</span></div>
+      <div class="step-hint">So we know who to follow up with.</div>
+      <div class="form-fields">
+
+        <div class="field-group">
+          <div class="field-label">Your name</div>
+          <input class="field-input" id="fieldName" type="text" placeholder="e.g. Budi Santoso" autocomplete="name">
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">Company / Organisation</div>
+          <input class="field-input" id="fieldCompany" type="text" placeholder="e.g. Kreasi Event" autocomplete="organization">
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">WhatsApp number</div>
+          <input class="field-input" id="fieldWA" type="tel" placeholder="+62 8xx xxxx xxxx" autocomplete="tel">
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">Event date (approximate)</div>
+          <input class="field-input" id="fieldDate" type="date">
+        </div>
+
+        <div class="field-group">
+          <div class="field-label">You are a...</div>
+          <div class="type-opts">
+            <div class="type-opt" id="typeEO" onclick="pickType('EO')">
+              <div class="type-opt-icon">🏢</div>
+              <div class="type-opt-label">Event Organiser</div>
+            </div>
+            <div class="type-opt" id="typeClient" onclick="pickType('Direct Client')">
+              <div class="type-opt-icon">👤</div>
+              <div class="type-opt-label">Direct Client / Brand</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button class="submit-btn" id="submitBtn" onclick="submitAndShow()">See my rate →</button>
+      <div class="submit-loading" id="submitLoading">Sending your details...</div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     SCREEN 3: RESULT
-══════════════════════════════════════ -->
+<!-- ══════════════════════════════════════ RESULT ══════════════════════════════════════ -->
 <div class="screen" id="screenResult">
   <div class="result-inner">
     <div class="result-photo">
-      <!-- TO SWAP PHOTO: change jeanice3.jpeg to any filename in your repo -->
       <img src="../jeanice3.jpeg" alt="Jeanice Ang">
       <div class="result-cover-bar"></div>
     </div>
@@ -379,7 +360,6 @@ body{
       <div class="result-note">Indicative estimate only. Final rate confirmed upon receipt of full event brief. Tax (PPh 21 / PPN) may apply. International travel negotiated separately.</div>
       <div class="result-btns">
         <a class="btn-primary" id="waBtn" href="#" target="_blank">💬 Send brief via WhatsApp</a>
-        <!-- TO UPDATE: replace # with your Google Drive PDF link -->
         <a class="btn-secondary" href="#" target="_blank">📄 Download rate card PDF</a>
         <button class="btn-ghost" onclick="restart()">← Start over</button>
       </div>
@@ -389,7 +369,7 @@ body{
 
 <script>
 // ============================================================
-// RATES — change these numbers to update pricing
+// RATES
 // ============================================================
 const RATES = {
   'Corporate / BUMN':        { 'Half Day': 6000000,  'Full Day': 10000000 },
@@ -397,11 +377,12 @@ const RATES = {
   'Brand Activation':        { 'Half Day': 8000000,  'Full Day': 13000000 },
 };
 const BILINGUAL_ADD = 1000000;
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwFEGyY_zxnDScNw1x88BSJbL1qGUGttOSBhfDWZZD5IrOg6Rc8LT__qMpaKIz8ly39/exec';
 // ============================================================
 
-const STEP_LABELS = ['Event type','Language','Duration','Add-ons'];
+const STEP_LABELS = ['Event type','Language','Duration','Add-ons','Your details'];
 let cur = 0;
-let state = { type: null, lang: null, duration: null, addons: [] };
+let state = { type: null, lang: null, duration: null, addons: [], clientType: null };
 
 function startQuiz() {
   document.getElementById('screenIntro').classList.remove('active');
@@ -438,6 +419,12 @@ function pickNoAddon(el) {
   document.getElementById('addonsBtn').classList.add('ready');
 }
 
+function pickType(val) {
+  state.clientType = val;
+  document.getElementById('typeEO').classList.toggle('selected', val === 'EO');
+  document.getElementById('typeClient').classList.toggle('selected', val === 'Direct Client');
+}
+
 function nextStep() {
   document.getElementById('step' + (cur + 1)).classList.remove('active');
   cur++;
@@ -446,48 +433,107 @@ function nextStep() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function setProgress(idx) {
-  document.getElementById('progressFill').style.width = ((idx + 1) / 4 * 100) + '%';
-  document.getElementById('progressLabel').textContent = STEP_LABELS[idx];
-  document.getElementById('progressCount').textContent = (idx + 1) + ' / 4';
+function goToDetails() {
+  nextStep();
 }
 
-function showResult() {
+function setProgress(idx) {
+  document.getElementById('progressFill').style.width = ((idx + 1) / 5 * 100) + '%';
+  document.getElementById('progressLabel').textContent = STEP_LABELS[idx];
+  document.getElementById('progressCount').textContent = (idx + 1) + ' / 5';
+}
+
+function calcTotal() {
   const base = RATES[state.type][state.duration];
   let total = base;
-  let rows = `<div class="b-row"><span class="b-label">${state.type} · ${state.duration}</span><span class="b-val">${fmt(base)}</span></div>`;
+  if (state.lang === 'Bilingual (EN + ID)') total += BILINGUAL_ADD;
+  state.addons.forEach(a => { total += a.val; });
+  return { base, total };
+}
 
+function buildBreakdown() {
+  const { base, total } = calcTotal();
+  let rows = `<div class="b-row"><span class="b-label">${state.type} · ${state.duration}</span><span class="b-val">${fmt(base)}</span></div>`;
   if (state.lang === 'Bilingual (EN + ID)') {
-    total += BILINGUAL_ADD;
     rows += `<div class="b-row"><span class="b-label">Bilingual hosting (EN + ID)</span><span class="b-val">+ ${fmt(BILINGUAL_ADD)}</span></div>`;
   }
-
   let hasIntl = false;
   state.addons.forEach(a => {
     if (a.label === 'International travel') {
       hasIntl = true;
       rows += `<div class="b-row"><span class="b-label">International travel</span><span class="b-val" style="font-style:italic;color:rgba(255,255,255,0.3)">To discuss</span></div>`;
     } else {
-      total += a.val;
       rows += `<div class="b-row"><span class="b-label">${a.label}</span><span class="b-val">+ ${fmt(a.val)}</span></div>`;
     }
   });
-
   document.getElementById('breakdownRows').innerHTML = rows;
   document.getElementById('totalVal').textContent = fmt(total) + (hasIntl ? ' +' : '');
+  return total;
+}
 
-  const addonsText = state.addons.length ? '\nAdd-ons: ' + state.addons.map(a => a.label).join(', ') : '';
+async function submitAndShow() {
+  const name = document.getElementById('fieldName').value.trim();
+  const company = document.getElementById('fieldCompany').value.trim();
+  const wa = document.getElementById('fieldWA').value.trim();
+  const date = document.getElementById('fieldDate').value;
+
+  if (!name || !company || !wa || !date || !state.clientType) {
+    alert('Please fill in all fields before continuing.');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  const loading = document.getElementById('submitLoading');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  loading.style.display = 'block';
+
+  const total = buildBreakdown();
+  const addonsText = state.addons.length ? state.addons.map(a => a.label).join(', ') : 'None';
+
+  // Send to Google Sheets
+  const payload = {
+    name,
+    company,
+    type: state.clientType,
+    wa,
+    eventDate: date,
+    eventType: state.type,
+    language: state.lang,
+    duration: state.duration,
+    addons: addonsText,
+    total: fmt(total),
+  };
+
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch (e) {
+    // no-cors means we can't read response, but data still sends
+    console.log('Sent to sheets');
+  }
+
+  // Build WA message
+  const addonsMsg = state.addons.length ? '\nAdd-ons: ' + addonsText : '';
   const msg = encodeURIComponent(
     'Hi, I\'m interested to book Jeanice Ang!\n\n' +
+    'Name: ' + name + '\n' +
+    'Company: ' + company + '\n' +
     'Event type: ' + state.type + '\n' +
     'Language: ' + state.lang + '\n' +
     'Duration: ' + state.duration +
-    addonsText + '\n' +
+    addonsMsg + '\n' +
+    'Event date: ' + date + '\n' +
     'Estimate: ' + fmt(total) + '\n\n' +
     'Please send me more details. Thank you!'
   );
   document.getElementById('waBtn').href = 'https://wa.me/62817791879?text=' + msg;
 
+  // Show result
   document.getElementById('screenQuiz').classList.remove('active');
   document.getElementById('screenResult').classList.add('active');
   window.scrollTo({ top: 0 });
@@ -496,14 +542,21 @@ function showResult() {
 function fmt(n) { return 'Rp ' + n.toLocaleString('id-ID'); }
 
 function restart() {
-  state = { type: null, lang: null, duration: null, addons: [] };
+  state = { type: null, lang: null, duration: null, addons: [], clientType: null };
   cur = 0;
-  for (let i = 1; i <= 4; i++) document.getElementById('step' + i).classList.remove('active');
+  for (let i = 1; i <= 5; i++) document.getElementById('step' + i).classList.remove('active');
   document.getElementById('step1').classList.add('active');
   document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.type-opt').forEach(o => o.classList.remove('selected'));
   const btn = document.getElementById('addonsBtn');
-  btn.classList.remove('ready');
-  btn.classList.add('muted');
+  btn.classList.remove('ready'); btn.classList.add('muted');
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = false; submitBtn.textContent = 'See my rate →';
+  document.getElementById('submitLoading').style.display = 'none';
+  document.getElementById('fieldName').value = '';
+  document.getElementById('fieldCompany').value = '';
+  document.getElementById('fieldWA').value = '';
+  document.getElementById('fieldDate').value = '';
   setProgress(0);
   document.getElementById('screenResult').classList.remove('active');
   document.getElementById('screenIntro').classList.add('active');
