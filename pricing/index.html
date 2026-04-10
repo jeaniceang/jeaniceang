@@ -249,12 +249,12 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
       <div class="opts">
         <div class="opt" onclick="pick(this,3,'Half Day')">
           <div class="opt-icon">🌤️</div>
-          <div class="opt-body"><div class="opt-title">Half Day</div><div class="opt-sub">Up to 4 hours · includes script review</div></div>
+          <div class="opt-body"><div class="opt-title">Half Day</div><div class="opt-sub">Up to 4 hours · includes standby time</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div></div>
         </div>
         <div class="opt" onclick="pick(this,3,'Full Day')">
           <div class="opt-icon">☀️</div>
-          <div class="opt-body"><div class="opt-title">Full Day</div><div class="opt-sub">Up to 8 hours · includes rehearsal</div></div>
+          <div class="opt-body"><div class="opt-title">Full Day</div><div class="opt-sub">Up to 8 hours · includes standby time</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div></div>
         </div>
       </div>
@@ -265,19 +265,19 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
       <div class="step-q">Any<br><span>add-ons?</span></div>
       <div class="step-hint">Select all that apply.</div>
       <div class="opts">
-        <div class="opt multi" onclick="toggle(this,'Dedicated rehearsal slot',1500000)">
+        <div class="opt multi" onclick="toggle(this,'Dedicated rehearsal slot on different day',1500000)">
           <div class="opt-icon">🎙️</div>
           <div class="opt-body"><div class="opt-title">Dedicated rehearsal slot</div><div class="opt-sub">+ Rp 1.500.000</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
         </div>
-        <div class="opt multi" onclick="toggle(this,'Extra hour',1500000)">
+        <div class="opt multi" onclick="toggle(this,'Extra hour',500000)">
           <div class="opt-icon">⏱️</div>
-          <div class="opt-body"><div class="opt-title">Extra hour (beyond package)</div><div class="opt-sub">+ Rp 1.500.000 per hour</div></div>
+          <div class="opt-body"><div class="opt-title">Extra hour (beyond package)</div><div class="opt-sub">+ Rp 500.000 per hour</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
         </div>
-        <div class="opt multi" onclick="toggle(this,'Outside Jabodetabek',2000000)">
+        <div class="opt multi" onclick="toggle(this,'Outside Jabodetabek',1000000)">
           <div class="opt-icon">✈️</div>
-          <div class="opt-body"><div class="opt-title">Outside Jabodetabek</div><div class="opt-sub">+ Rp 2.000.000 · travel & accommodation by client</div></div>
+          <div class="opt-body"><div class="opt-title">Outside Jabodetabek</div><div class="opt-sub">+ Rp 1.000.000 · travel & accommodation by client</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
         </div>
         <div class="opt multi" onclick="toggle(this,'International travel',0)">
@@ -372,9 +372,9 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
 // RATES
 // ============================================================
 const RATES = {
-  'Corporate / BUMN':        { 'Half Day': 6000000,  'Full Day': 10000000 },
-  'Broadcast & Large-Scale': { 'Half Day': 8000000,  'Full Day': 13000000 },
-  'Brand Activation':        { 'Half Day': 8000000,  'Full Day': 13000000 },
+  'Corporate / BUMN':        { 'Half Day': 4000000,  'Full Day': 5500000 },
+  'Broadcast & Large-Scale': { 'Half Day': 4000000,  'Full Day': 5500000 },
+  'Brand Activation':        { 'Half Day': 4000000,  'Full Day': 5500000 },
 };
 const BILINGUAL_ADD = 1000000;
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzWlpxtpr83cGVk6uKNfH0DtydqiEjVIerQzwWcBdYpoQfBeyTH3_GQiiKe5aSCoaHK/exec';
