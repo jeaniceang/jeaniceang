@@ -137,6 +137,10 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
 .total-val{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:var(--gold);}
 .result-note{font-size:11px;color:rgba(255,255,255,0.25);line-height:1.7;margin-bottom:20px;}
 .result-btns{display:flex;flex-direction:column;gap:10px;}
+.stories-callout{display:flex;align-items:flex-start;gap:10px;background:rgba(123,95,160,0.08);border:0.5px solid rgba(123,95,160,0.2);border-radius:10px;padding:12px 14px;margin-bottom:12px;}
+.stories-callout-dot{width:6px;height:6px;border-radius:50%;background:var(--purple-light);flex-shrink:0;margin-top:4px;}
+.stories-callout-text{font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;}
+.stories-callout-text strong{color:var(--purple-light);font-weight:500;}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -197,7 +201,7 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
         <span class="progress-count" id="progressCount">1 / 5</span>
       </div>
       <div class="progress-track">
-        <div class="progress-fill" id="progressFill" style="width:20%"></div>
+        <div class="progress-fill" id="progressFill" style="width:16.6%"></div>
       </div>
     </div>
 
@@ -224,17 +228,40 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
       </div>
     </div>
 
-    <!-- Q2: Language -->
+    <!-- Q2: Location -->
     <div class="step" id="step2">
+      <div class="step-q">Where's the<br><span>event?</span></div>
+      <div class="step-hint">This helps us flag if travel needs to be discussed.</div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,2,'Jabodetabek')">
+          <div class="opt-icon">📍</div>
+          <div class="opt-body"><div class="opt-title">Jabodetabek</div><div class="opt-sub">Jakarta, Bogor, Depok, Tangerang, Bekasi</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+        <div class="opt" onclick="pick(this,2,'Outside Jabodetabek')">
+          <div class="opt-icon">🗺️</div>
+          <div class="opt-body"><div class="opt-title">Outside Jabodetabek</div><div class="opt-sub">Travel & accommodation — rate discussed separately</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+        <div class="opt" onclick="pick(this,2,'International')">
+          <div class="opt-icon">✈️</div>
+          <div class="opt-body"><div class="opt-title">International</div><div class="opt-sub">Rate discussed separately</div></div>
+          <div class="opt-check"><div class="opt-check-dot"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3: Language -->
+    <div class="step" id="step3">
       <div class="step-q">What's the<br><span>language?</span></div>
       <div class="step-hint">Bilingual events include an add-on for English hosting.</div>
       <div class="opts">
-        <div class="opt" onclick="pick(this,2,'Indonesian')">
+        <div class="opt" onclick="pick(this,3,'Indonesian')">
           <div class="opt-icon">🇮🇩</div>
           <div class="opt-body"><div class="opt-title">Indonesian only</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div></div>
         </div>
-        <div class="opt" onclick="pick(this,2,'Bilingual (EN + ID)')">
+        <div class="opt" onclick="pick(this,3,'Bilingual (EN + ID)')">
           <div class="opt-icon">🌏</div>
           <div class="opt-body"><div class="opt-title">Bilingual (EN + ID)</div><div class="opt-sub">+ Rp 1.000.000</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div></div>
@@ -242,17 +269,17 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
       </div>
     </div>
 
-    <!-- Q3: Duration -->
-    <div class="step" id="step3">
+    <!-- Q4: Duration -->
+    <div class="step" id="step4">
       <div class="step-q">How long is<br><span>the event?</span></div>
       <div class="step-hint">Jeanice's on-stage / on-camera time.</div>
       <div class="opts">
-        <div class="opt" onclick="pick(this,3,'Half Day')">
+        <div class="opt" onclick="pick(this,4,'Half Day')">
           <div class="opt-icon">🌤️</div>
           <div class="opt-body"><div class="opt-title">Half Day</div><div class="opt-sub">Up to 4 hours · includes standby time</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div></div>
         </div>
-        <div class="opt" onclick="pick(this,3,'Full Day')">
+        <div class="opt" onclick="pick(this,4,'Full Day')">
           <div class="opt-icon">☀️</div>
           <div class="opt-body"><div class="opt-title">Full Day</div><div class="opt-sub">Up to 8 hours · includes standby time</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div></div>
@@ -260,8 +287,8 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
       </div>
     </div>
 
-    <!-- Q4: Add-ons -->
-    <div class="step" id="step4">
+    <!-- Q5: Add-ons -->
+    <div class="step" id="step5">
       <div class="step-q">Any<br><span>add-ons?</span></div>
       <div class="step-hint">Select all that apply.</div>
       <div class="opts">
@@ -275,14 +302,9 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
           <div class="opt-body"><div class="opt-title">Extra hour (beyond package)</div><div class="opt-sub">+ Rp 500.000 per hour</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
         </div>
-        <div class="opt multi" onclick="toggle(this,'Outside Jabodetabek',1000000)">
-          <div class="opt-icon">✈️</div>
-          <div class="opt-body"><div class="opt-title">Outside Jabodetabek</div><div class="opt-sub">+ Rp 1.000.000 · travel & accommodation by client</div></div>
-          <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
-        </div>
-        <div class="opt multi" onclick="toggle(this,'International travel',0)">
-          <div class="opt-icon">🌍</div>
-          <div class="opt-body"><div class="opt-title">International travel</div><div class="opt-sub">Rate discussed separately</div></div>
+        <div class="opt multi" onclick="toggle(this,'Content Package (Branded Reel + editing)',0)">
+          <div class="opt-icon">🎬</div>
+          <div class="opt-body"><div class="opt-title">Content Package</div><div class="opt-sub">Branded Reel + editing · Rate TBD per brief</div></div>
           <div class="opt-check"><div class="opt-check-dot"></div><div class="opt-check-tick">✓</div></div>
         </div>
         <div class="opt" id="noAddonOpt" onclick="pickNoAddon(this)">
@@ -294,8 +316,8 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
       <button class="next-btn muted" id="addonsBtn" onclick="goToDetails()">Next →</button>
     </div>
 
-    <!-- Q5: Details -->
-    <div class="step" id="step5">
+    <!-- Q6: Details -->
+    <div class="step" id="step6">
       <div class="step-q">Almost there —<br><span>tell us about you.</span></div>
       <div class="step-hint">So we know who to follow up with.</div>
       <div class="form-fields">
@@ -357,7 +379,11 @@ body{background:var(--obsidian);font-family:'DM Sans',sans-serif;color:var(--whi
         <div class="total-label">Estimated total</div>
         <div class="total-val" id="totalVal">Rp 0</div>
       </div>
-      <div class="result-note">Indicative estimate only. Final rate confirmed upon receipt of full event brief. Tax (PPh 21 / PPN) may apply. International travel negotiated separately.</div>
+      <div class="stories-callout">
+        <div class="stories-callout-dot"></div>
+        <div class="stories-callout-text"><strong>Included with every booking:</strong> 2 IG Stories — pre-event & during event. Organic coverage posted to 250K+ followers, client tagged. No extra charge.</div>
+      </div>
+      <div class="result-note">Indicative estimate only. Final rate confirmed upon receipt of full event brief. Tax (PPh 21 / PPN) may apply. Content Package and events outside Jabodetabek / international travel negotiated separately.</div>
       <div class="result-btns">
         <a class="btn-primary" id="waBtn" href="#" target="_blank">💬 Send brief via WhatsApp</a>
         <a class="btn-secondary" href="https://drive.google.com/file/d/1YFOmR7GrmbRHpQmjioPBWzdab3H8PPRs/view?usp=sharing" target="_blank">📄 Download rate card PDF</a>
@@ -380,9 +406,9 @@ const BILINGUAL_ADD = 1000000;
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzWlpxtpr83cGVk6uKNfH0DtydqiEjVIerQzwWcBdYpoQfBeyTH3_GQiiKe5aSCoaHK/exec';
 // ============================================================
 
-const STEP_LABELS = ['Event type','Language','Duration','Add-ons','Your details'];
+const STEP_LABELS = ['Event type','Location','Language','Duration','Add-ons','Your details'];
 let cur = 0;
-let state = { type: null, lang: null, duration: null, addons: [], clientType: null };
+let state = { type: null, location: null, lang: null, duration: null, addons: [], clientType: null };
 
 function startQuiz() {
   document.getElementById('screenIntro').classList.remove('active');
@@ -394,8 +420,9 @@ function pick(el, step, val) {
   el.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
   if (step === 1) state.type = val;
-  else if (step === 2) state.lang = val;
-  else if (step === 3) state.duration = val;
+  else if (step === 2) state.location = val;
+  else if (step === 3) state.lang = val;
+  else if (step === 4) state.duration = val;
   setTimeout(nextStep, 260);
 }
 
@@ -412,7 +439,7 @@ function toggle(el, label, val) {
 }
 
 function pickNoAddon(el) {
-  document.querySelectorAll('#step4 .opt.multi').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('#step5 .opt.multi').forEach(o => o.classList.remove('selected'));
   state.addons = [];
   el.classList.add('selected');
   document.getElementById('addonsBtn').classList.remove('muted');
@@ -438,9 +465,9 @@ function goToDetails() {
 }
 
 function setProgress(idx) {
-  document.getElementById('progressFill').style.width = ((idx + 1) / 5 * 100) + '%';
+  document.getElementById('progressFill').style.width = ((idx + 1) / 6 * 100) + '%';
   document.getElementById('progressLabel').textContent = STEP_LABELS[idx];
-  document.getElementById('progressCount').textContent = (idx + 1) + ' / 5';
+  document.getElementById('progressCount').textContent = (idx + 1) + ' / 6';
 }
 
 function calcTotal() {
@@ -454,20 +481,23 @@ function calcTotal() {
 function buildBreakdown() {
   const { base, total } = calcTotal();
   let rows = `<div class="b-row"><span class="b-label">${state.type} · ${state.duration}</span><span class="b-val">${fmt(base)}</span></div>`;
+  if (state.location && state.location !== 'Jabodetabek') {
+    rows += `<div class="b-row"><span class="b-label">Location: ${state.location}</span><span class="b-val" style="font-style:italic;color:rgba(255,255,255,0.3)">Rate TBD</span></div>`;
+  }
   if (state.lang === 'Bilingual (EN + ID)') {
     rows += `<div class="b-row"><span class="b-label">Bilingual hosting (EN + ID)</span><span class="b-val">+ ${fmt(BILINGUAL_ADD)}</span></div>`;
   }
-  let hasIntl = false;
+  let hasTBD = state.location && state.location !== 'Jabodetabek';
   state.addons.forEach(a => {
-    if (a.label === 'International travel') {
-      hasIntl = true;
-      rows += `<div class="b-row"><span class="b-label">International travel</span><span class="b-val" style="font-style:italic;color:rgba(255,255,255,0.3)">To discuss</span></div>`;
+    if (a.val === 0) {
+      hasTBD = true;
+      rows += `<div class="b-row"><span class="b-label">${a.label}</span><span class="b-val" style="font-style:italic;color:rgba(255,255,255,0.3)">Rate TBD</span></div>`;
     } else {
       rows += `<div class="b-row"><span class="b-label">${a.label}</span><span class="b-val">+ ${fmt(a.val)}</span></div>`;
     }
   });
   document.getElementById('breakdownRows').innerHTML = rows;
-  document.getElementById('totalVal').textContent = fmt(total) + (hasIntl ? ' +' : '');
+  document.getElementById('totalVal').textContent = fmt(total) + (hasTBD ? ' +' : '');
   return total;
 }
 
@@ -499,6 +529,7 @@ async function submitAndShow() {
     wa,
     eventDate: date,
     eventType: state.type,
+    location: state.location,
     language: state.lang,
     duration: state.duration,
     addons: addonsText,
@@ -521,6 +552,7 @@ async function submitAndShow() {
     'Name: ' + name + '\n' +
     'Company: ' + company + '\n' +
     'Event type: ' + state.type + '\n' +
+    'Location: ' + state.location + '\n' +
     'Language: ' + state.lang + '\n' +
     'Duration: ' + state.duration +
     addonsMsg + '\n' +
@@ -539,9 +571,9 @@ async function submitAndShow() {
 function fmt(n) { return 'Rp ' + n.toLocaleString('id-ID'); }
 
 function restart() {
-  state = { type: null, lang: null, duration: null, addons: [], clientType: null };
+  state = { type: null, location: null, lang: null, duration: null, addons: [], clientType: null };
   cur = 0;
-  for (let i = 1; i <= 5; i++) document.getElementById('step' + i).classList.remove('active');
+  for (let i = 1; i <= 6; i++) document.getElementById('step' + i).classList.remove('active');
   document.getElementById('step1').classList.add('active');
   document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
   document.querySelectorAll('.type-opt').forEach(o => o.classList.remove('selected'));
